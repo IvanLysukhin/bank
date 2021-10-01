@@ -1,0 +1,107 @@
+@import "colors"
+
+.calculator__wrapper
+  width: 1170px
+  margin: 0 auto
+  padding: 46px 0 0 0
+
+.calculator__title
+  font-weight: bold
+  font-size: 41px
+
+.calculator__form
+  display: flex
+  flex-direction: column
+
+.calculator__list
+  flex-grow: 1
+  display: grid
+  grid-template-columns: 1fr 1fr
+  grid-column-gap: 120px
+  margin-top: 53px
+  background-image: url("../img/arrows.svg")
+  background-repeat: no-repeat
+  background-position: center top 61px
+
+.calculator__submit-box
+  flex-grow: 1
+  display: flex
+  justify-content: space-between
+
+.calculator__item
+  display: grid
+  grid-template-columns: 390px 120px
+  grid-template-rows: auto auto
+  grid-column-gap: 15px
+
+.calculator__label
+  grid-column-start: 1
+  grid-column-end: -1
+  font-weight: 500
+  font-size: 22px
+  margin-bottom: 26px
+
+.calculator__input
+  padding: 14px
+  text-align: center
+  font-family: "Roboto", "Arial", sans-serif
+  font-weight: 500
+  font-size: 24px
+  border: 1px solid $main-black
+  border-radius: 4px
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button,
+  &[type=number]::-webkit-inner-spin-button,
+  &[type=number]::-webkit-outer-spin-button
+    -webkit-appearance: none
+    margin: 0
+
+  &[type="number"]
+    -moz-appearance: textfield
+
+  &--currency
+    font-size: 30px
+    padding: 0 27px 0 0
+    width: 120px
+    position: relative
+    background-image: url("../img/arrow-icon.svg")
+    background-repeat: no-repeat
+    background-position: right 15px center
+    cursor: pointer
+    -moz-appearance: none
+    -webkit-appearance: none
+
+    &::-ms-expand
+      display: none
+
+  &--calendar
+    width: 194px
+    padding: 17px 79px 13px 115px
+    text-align: left
+    background-image: url("../img/icon-calendar.svg")
+    background-repeat: no-repeat
+    background-position: right 18px center
+    cursor: pointer
+
+.calculator__submit-box
+  margin-top: 70px
+
+.calculator__save-btn
+  width: 382px
+  font-weight: 500
+  font-size: 18px
+  background-color: $main-blue
+  border: none
+  color: $alt-white
+  border-radius: 4px
+  cursor: pointer
+  font-family: "Roboto", "Arial", sans-serif
+
+  &:hover
+    opacity: 0.7
+
+  &:active
+    opacity: 1
+    box-shadow: inset 1px 1px 5px 1px $main-black
+

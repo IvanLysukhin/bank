@@ -1,0 +1,57 @@
+@import "colors"
+
+.promo-block
+  background-color: $main-blue
+  background-image: url("../img/promo-back.jpg")
+  background-repeat: no-repeat
+  background-position: center
+
+.promo-block__wrapper
+  width: 933px
+  margin: 0 auto
+  padding: 61px 0 53px 28px
+  display: grid
+  grid-template-columns: 1fr 1fr
+  grid-template-rows: auto auto
+
+.promo-block__title
+  font-weight: normal
+  font-size: 22px
+  line-height: 26px
+  color: $main-white
+  padding: 56px 0 0 38px
+  height: 55px
+
+.promo-block__big-text
+  font-weight: bold
+  font-size: 54px
+  color: $alt-white
+  margin-bottom: 4px
+  display: block
+
+.promo-block__pic
+  width: 444px
+  height: 286px
+  grid-column-start: 2
+  grid-row-start: 1
+  grid-row-end: 3
+
+.promo-block__link
+  color: $main-black
+  font-family: "Roboto", "Arial", sans-serif
+  font-weight: 500
+  font-size: 18px
+  padding: 15px 36px 21px 36px
+  background-color: #F6F7FF
+  border-radius: 4px
+  width: 162px
+  height: 16px
+  text-align: center
+  margin-left: 37px
+
+  &:hover
+    color: $main-blue
+
+  &:active
+    box-shadow: inset 0 0 2px 1px $main-black
+    color: $main-blue-opacity

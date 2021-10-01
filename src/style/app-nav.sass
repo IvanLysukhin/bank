@@ -1,0 +1,53 @@
+@import "colors"
+
+.app-nav
+  width: 1170px
+  margin: 0 auto
+  padding-top: 16px
+  display: flex
+  justify-content: space-between
+  align-items: center
+
+.app-nav__list
+  display: flex
+  justify-content: flex-start
+  justify-self: center
+  flex-grow: 1
+  padding: 0 10px 0 53px
+
+.app-nav__item
+  margin-right: 10px
+
+.app-nav__link
+  display: block
+  padding: 5px 8px
+  color: $main-black
+
+  &--current
+    color: $main-blue
+
+  &:hover
+    background-color: $main-blue-opacity
+    border-radius: 25px
+
+  &:active
+    color: $main-black-opacity
+    box-shadow: inset 1px 1px 3px 0 $main-blue-opacity
+
+.app-nav__log-in
+  padding: 5px 0 5px 31px
+  color: $main-black
+  position: relative
+
+  &:hover
+    color: $main-blue
+  &:active
+    opacity: 0.2
+
+.app-nav__pic
+  position: absolute
+  left: 0
+  top: 2px
+
+.app-nav__log-in:hover path
+  fill: $main-blue

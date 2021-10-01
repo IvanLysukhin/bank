@@ -1,0 +1,89 @@
+@import "colors"
+
+.results-list
+  width: 1028px
+  margin: 0 auto
+  padding: 44px 70px
+  background: $alt-white
+  border-radius: 4px
+  margin-top: 101px
+
+.results-list__title
+  font-weight: 500
+  font-size: 28px
+  color: $main-black
+
+.results-list__list
+  font-weight: normal
+  font-size: 18px
+  display: grid
+  grid-template-columns: 1fr 1fr
+  grid-column-gap: 237px
+  margin-top: 54px
+  position: relative
+  margin-bottom: 21px
+  height: 233px
+
+  &:after
+    content: ""
+    position: absolute
+    top: -33px
+    left: 50%
+    width: 1px
+    height: 289px
+    background-color: $border-grey
+    box-shadow: 0 4px 4px rgba(0, 0, 0, 0.25)
+
+.results-list__item
+  display: flex
+  justify-content: space-between
+  margin-bottom: 25px
+
+  &:nth-of-type(2n)
+    margin-left: 10px
+
+.results-list__text
+  flex-grow: 1
+  display: block
+  height: min-content
+
+  &--time
+    flex-grow: 0
+    width: 91px
+
+  &--start-value
+    text-align: left
+    padding-right: 13px
+    padding-left: 39px
+    position: relative
+
+    &:after
+      content: url("../img/arrow-rigth.svg")
+      position: absolute
+      right: 0
+      top: 0
+      margin-right: -10px
+
+  &--end-value
+    display: block
+    text-align: center
+    padding-left: 3px
+
+.results-list__reset-btn
+  padding: 16px 28px
+  font-weight: 500
+  font-size: 16px
+  background-color: $main-blue
+  border: none
+  color: $alt-white
+  border-radius: 4px
+  cursor: pointer
+  font-family: "Roboto", "Arial", sans-serif
+
+  &:hover
+    opacity: 0.7
+
+  &:active
+    opacity: 1
+    box-shadow: inset 1px 1px 5px 1px $main-black
+
