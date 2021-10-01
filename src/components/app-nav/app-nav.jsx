@@ -12,23 +12,18 @@ function AppNav() {
           </a>
         </li>
         <li className="app-nav__item">
-          <a className="app__link app-nav__link" href="#">
+          <a className="app__link app-nav__link app-nav__link--current" href="#">
             Рассчитать кредит
           </a>
         </li>
         <li className="app-nav__item">
-          <a className="app__link app-nav__link app-nav__link--current" href="#">
+          <a className="app__link app-nav__link" href="#">
             Конвертер валют
           </a>
         </li>
         <li className="app-nav__item">
           <a className="app__link app-nav__link" href="#">
             Контакты
-          </a>
-        </li>
-        <li className="app-nav__item">
-          <a className="app__link app-nav__link" href="#">
-            Задать вопрос
           </a>
         </li>
       </ul>
