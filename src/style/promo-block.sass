@@ -5,17 +5,37 @@
   background-image: url("../img/promo-back.jpg")
   background-repeat: no-repeat
   background-position: center
+  &--slide-1
+    background: linear-gradient(to right, #DDE2EC, #F3F8FF)
+    .swiper-pagination-bullet
+      opacity: 1
+      background: $main-blue
+    .swiper-pagination-bullet-active
+      opacity: 1
+      background: #fff
+
   &--slide-2
-    background: linear-gradient(to right, #DDE2EC 20%, #F3F8FF 80%)
+    background: #E6F1FE
+    .swiper-pagination-bullet
+      opacity: 1
+      background: $main-blue
+    .swiper-pagination-bullet-active
+      opacity: 0.2
+      background: $main-black
 
 
 .promo-block__wrapper
   width: 1366px
   margin: 0 auto
 
-  &--slide-2
+  &--slide-1
     background-color: transparent
     background-image: url("../img/slide-2.jpg")
+    height: 400px
+
+  &--slide-2
+    background-color: transparent
+    background-image: url("../img/slide-3.jpg")
     height: 400px
 
 .promo-block__content-wrapper
@@ -26,6 +46,10 @@
   grid-template-columns: 1fr 1fr
   grid-template-rows: auto auto
 
+  &--slide-2
+    grid-template-columns: 1fr
+    row-gap: 65px
+
 .promo-block__title
   font-weight: normal
   font-size: 22px
@@ -34,10 +58,13 @@
   padding: 56px 0 0 38px
   height: 55px
 
+  &--dark
+    color: $main-black
+
 .promo-block__big-text
   font-weight: bold
   font-size: 54px
-  color: $alt-white
+  color: inherit
   margin-bottom: 4px
   display: block
 
@@ -67,3 +94,11 @@
   &:active
     box-shadow: inset 0 0 2px 1px $main-black
     color: $main-blue-opacity
+
+  &--blue
+    background-color: $main-blue
+    color: $alt-white
+    &:hover
+      color: $alt-white
+      opacity: 0.9
+
