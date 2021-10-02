@@ -1,0 +1,81 @@
+.services
+  width: 1170px
+  margin: 0 auto
+
+.services__tabs-list
+  display: flex
+  list-style: none
+  padding: 0
+  margin: 0
+
+.services__tab
+  box-sizing: border-box
+  width: 293px
+  height: 93px
+  display: flex
+  align-items: center
+  justify-content: center
+  color: $light-black
+  font-weight: 500
+  cursor: pointer
+
+
+  &--current
+    background: $alt-white
+    color: $main-black
+
+.services__tab-text
+  display: inline-block
+  margin-left: 10px
+
+.services__container
+  background: $alt-white
+  padding: 60px 135px 60px 70px
+  display: grid
+  grid-template-columns: 1fr 1fr
+  column-gap: 50px
+
+.services__info-text
+  font-weight: 500
+  color: $main-black
+  font-size: 22px
+  line-height: 140%
+  margin: 0
+
+.services__info-list
+  padding: 0
+  margin-top: 40px
+  list-style: none
+  font-size: 18px
+  font-weight: normal
+
+.services__info-item
+  margin-bottom: 25px
+  padding-left: 21px
+  position: relative
+  &:before
+    content: ""
+    background-image: url("../img/check-icon.svg")
+    background-repeat: no-repeat
+    position: absolute
+    top: 0
+    left: 0
+    width: 15px
+    height: 10px
+
+.services__info-btn
+  display: flex
+  justify-content: center
+  align-items: center
+  box-sizing: border-box
+  color: $alt-white
+  text-decoration: none
+  background: $main-blue
+  border-radius: 4px
+  font-family: "Roboto", "Arial", sans-serif
+  font-weight: 500
+  font-size: 18px
+  width: 198px
+  height: 51px
+  text-align: center
+  margin-top: 40px
