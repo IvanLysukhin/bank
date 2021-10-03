@@ -1,3 +1,45 @@
 .credit-calc
   width: 1170px
   margin: 0 auto
+  display: grid
+  padding-top: 96px
+  grid-template-columns: 600px auto
+  grid-template-rows: auto auto auto
+
+.credit-calc__main-title
+  grid-row-start: 1
+  grid-row-end: 2
+  grid-column-start: 1
+  grid-column-end: -1
+  font-weight: bold
+  font-size: 41px
+  margin: 0 0 26px 0
+
+.credit-calc__step-title
+  font-weight: 500
+  font-size: 22px
+  margin: 29px 0 24px 0
+
+.credit-calc__step-two
+  grid-column-start: 1
+  grid-column-end: 2
+
+.credit-calc__offer
+  grid-column-start: 2
+  grid-column-end: -1
+  grid-row-start: 2
+  grid-row-end: 4
+
+.credit-calc__application
+  grid-column-start: 1
+  grid-column-end: -1
+
+.credit-calc__select-container svg
+  width: 30px
+  height: 30px
+  transform: rotate(180deg)
+  transition: 450ms
+
+.credit-calc__select-container--open svg
+    transform: rotate(0deg)
+    transition: 450ms
