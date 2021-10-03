@@ -3,6 +3,7 @@ import PromoBlock from '../promo-block/promo-block';
 import AppFooter from '../app-footer/app-footer';
 import React from 'react';
 import Services from '../services/services';
+import CreditCalc from '../credit-calc/credit-calc';
 
 function App() {
   return (
@@ -14,6 +15,7 @@ function App() {
         <h1 className="app__title visually-hidden">Интернет-банк ЛИГА банк</h1>
         <PromoBlock/>
         <Services/>
+        <CreditCalc/>
       </main>
       <footer className="app__footer">
         <AppFooter/>
