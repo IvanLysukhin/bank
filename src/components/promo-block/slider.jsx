@@ -48,7 +48,7 @@ function Slider ({onSlideChange}) {
               <span className="promo-block__big-text">Лига Банк</span><br/>
               Всегда рядом
             </h2>
-            <a className="app__link promo-block__link promo-block__link--blue" href="#">Найти отделение</a>
+            <a className="app__link promo-block__link promo-block__link--blue promo-block__link--wide" href="#">Найти отделение</a>
           </div>
         </div>
       </SwiperSlide>

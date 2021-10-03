@@ -27,39 +27,45 @@
 .services__tab-text
   display: inline-block
   margin-left: 10px
+  font-size: 18px
 
 .services__container
   background: $alt-white
-  padding: 60px 135px 60px 70px
+  padding: 60px 135px 55px 70px
   display: grid
   grid-template-columns: 1fr 1fr
-  column-gap: 50px
+  column-gap: 90px
+  box-sizing: border-box
+  height: 410px
 
 .services__info-text
   font-weight: 500
   color: $main-black
   font-size: 22px
   line-height: 140%
-  margin: 0
+  margin: -7px 0 0 0
 
 .services__info-list
   padding: 0
-  margin-top: 40px
+  margin-top: 27px
   list-style: none
   font-size: 18px
   font-weight: normal
 
 .services__info-item
-  margin-bottom: 25px
   padding-left: 21px
   position: relative
+  max-width: 380px
+  &:not(:last-of-type)
+    margin-bottom: 17px
+
   &:before
     content: ""
     background-image: url("../img/check-icon.svg")
     background-repeat: no-repeat
     position: absolute
-    top: 0
-    left: 0
+    top: 5px
+    left: -2px
     width: 15px
     height: 10px
 
@@ -74,8 +80,27 @@
   border-radius: 4px
   font-family: "Roboto", "Arial", sans-serif
   font-weight: 500
-  font-size: 18px
+  font-size: 16px
   width: 198px
   height: 51px
   text-align: center
-  margin-top: 40px
+  margin-top: 35px
+
+.services__text
+  font-size: 18px
+  font-weight: normal
+  line-height: 140%
+  display: block
+  width: 350px
+  margin: 30px 0 0 0
+
+.services__info-text-link
+  color: $main-black
+
+.services__picture
+  &--car
+    margin: -5px 0 0 -13px
+  &--lock
+    margin: -10px 0 0 0
+  &--phone
+    margin: -10px 0 0 0

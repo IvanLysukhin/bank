@@ -41,22 +41,24 @@ function Services() {
       element = (
         <>
           <div className="services__info">
-            <p className="services__info-text">Лига Банк выдает кредиты под любые цели</p>
+            <p className="services__info-text">Лига Банк выдает кредиты<br/> под любые цели</p>
             <ul className="services__info-list">
               <li className="services__info-item">
-                 Проценты по вкладам до 7%
+                Ипотечный кредит
               </li>
               <li className="services__info-item">
-                 Разнообразные условия
+                Автокредит
               </li>
               <li className="services__info-item">
-                 Возможность ежемесячной капитализации или вывод процентов на банковскую карту
+                Потребительский кредит
               </li>
             </ul>
-            <a className="services__info-btn" href="/">Узнать подробнее</a>
+            <p className="services__text">Рассчитайте ежемесячный платеж<br/> и ставку по кредиту воспользовавшись<br/> нашим
+              <a className="services__info-text-link" href="/">&nbsp;кредитным калькулятором</a>
+            </p>
           </div>
-          <div className="services__picture">
-            <img src="../../img/piggybank.jpg" width="440" height="290" alt="Вклады"/>
+          <div className="services__picture services__picture--car">
+            <img src="../../img/car.jpg" width="440" height="290" alt="Вклады"/>
           </div>
         </>
       );
@@ -65,22 +67,22 @@ function Services() {
       element = (
         <>
           <div className="services__info">
-            <p className="services__info-text">Лига Страхование — застрахуем все что захотите</p>
+            <p className="services__info-text">Лига Страхование — застрахуем<br/> все что захотите</p>
             <ul className="services__info-list">
               <li className="services__info-item">
-                 Проценты по вкладам до 7%
+                Автомобильное страхование
               </li>
               <li className="services__info-item">
-                 Разнообразные условия
+                Страхование жизни и здоровья
               </li>
               <li className="services__info-item">
-                 Возможность ежемесячной капитализации или вывод процентов на банковскую карту
+                Страхование недвижимости
               </li>
             </ul>
             <a className="services__info-btn" href="/">Узнать подробнее</a>
           </div>
-          <div className="services__picture">
-            <img src="../../img/piggybank.jpg" width="440" height="290" alt="Вклады"/>
+          <div className="services__picture services__picture--lock">
+            <img src="../../img/lock.png" width="440" height="290" alt="Вклады"/>
           </div>
         </>
       );
@@ -92,19 +94,18 @@ function Services() {
             <p className="services__info-text">Лига Банк — это огромное количество онлайн-сервисов для вашего удобства</p>
             <ul className="services__info-list">
               <li className="services__info-item">
-                 Проценты по вкладам до 7%
+                Мобильный банк,<br/>
+                который всегда под рукой
               </li>
               <li className="services__info-item">
-                 Разнообразные условия
-              </li>
-              <li className="services__info-item">
-                 Возможность ежемесячной капитализации или вывод процентов на банковскую карту
+                Приложение Лига-проездной позволит<br/>
+                вам оплачивать билеты по всему миру
               </li>
             </ul>
             <a className="services__info-btn" href="/">Узнать подробнее</a>
           </div>
-          <div className="services__picture">
-            <img src="../../img/piggybank.jpg" width="440" height="290" alt="Вклады"/>
+          <div className="services__picture services__picture--phone">
+            <img src="../../img/phone.png" width="440" height="290" alt="Вклады"/>
           </div>
         </>
       );
