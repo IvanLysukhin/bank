@@ -18,7 +18,12 @@
 .credit-calc__step-title
   font-weight: 500
   font-size: 22px
-  margin: 29px 0 24px 0
+  margin: 29px 0 22px 0
+  &--offer
+    margin: 0
+
+.credit-calc__step-one
+  margin-bottom: 10px
 
 .credit-calc__step-two
   grid-column-start: 1
@@ -43,3 +48,154 @@
 .credit-calc__select-container--open svg
     transform: rotate(0deg)
     transition: 450ms
+
+.credit-calc__input-container
+  position: relative
+  display: flex
+  align-items: center
+
+.credit-calc__label
+  font-weight: normal
+  font-size: 16px
+  color: $light-grey
+  display: inline-block
+  margin-bottom: 10px
+
+.credit-calc__warning-info
+  font-size: 14px
+  color: $dark-grey
+  margin: 10px 0 0 0
+
+.credit-calc__btn
+  cursor: pointer
+  position: absolute
+  top: 0
+  display: flex
+  align-items: center
+  justify-content: center
+  background: transparent
+  width: 60px
+  height: 100%
+  border: none
+
+  &--decrease
+    left: 0
+  &--increase
+    right: 0
+
+.credit-calc__input
+  padding: 17px 60px
+  text-align: center
+  font-family: "Roboto", "Arial", sans-serif
+  font-weight: 500
+  font-size: 18px
+  border: 1px solid $main-black
+  border-radius: 4px
+  flex-grow: 1
+
+  &::-webkit-outer-spin-button,
+  &::-webkit-inner-spin-button,
+  &[type=number]::-webkit-inner-spin-button,
+  &[type=number]::-webkit-outer-spin-button
+      -webkit-appearance: none
+      margin: 0
+
+  &[type="number"]
+      -moz-appearance: textfield
+
+
+.credit-calc__step-container
+  margin-bottom: 22px
+
+  &--time
+    margin-top: 44px
+
+.credit-calc__scrollbar-container
+  margin-top: 20px
+  &--time
+    margin-top: 16px
+
+.rc-slider-tooltip-inner
+  background: transparent
+  font-size: 14px
+  color: #707C87
+  box-shadow: none
+  margin-left: 10px
+
+.credit-calc__checkbox-label
+  font-size: 16px
+  padding-left: 25px
+  color: $main-black
+  position: relative
+  display: inline-block
+  margin-top: 20px
+
+  &:before
+    content: ""
+    position: absolute
+    top: 2px
+    left: 3px
+    box-sizing: border-box
+    width: 16px
+    height: 16px
+    border: 2px solid $main-blue
+    border-radius: 2px
+
+
+.credit-calc__checkbox-input:checked + .credit-calc__checkbox-label
+  &:before
+    background-image: url("../img/check.svg")
+    background-repeat: no-repeat
+    background-position: center
+    background-color: $main-blue
+
+.credit-calc__offer-container
+  background-color: $alt-white
+  padding: 56px
+  margin-left: 73px
+  margin-top: 32px
+
+.credit-calc__offer-list
+  list-style: none
+  padding: 0
+  margin: 27px 0 0 0
+  display: grid
+  grid-template-columns: auto auto
+  grid-template-rows: auto auto
+  grid-column-gap: 50px
+  grid-row-gap: 28px
+
+
+.credit-calc__offer-value,
+.credit-calc__offer-label
+  margin: 0
+
+.credit-calc__offer-value
+  color: $main-black
+  font-weight: 500
+  font-size: 22px
+  line-height: 140%
+
+.credit-calc__offer-label
+  color: $light-grey
+  font-weight: normal
+  font-size: 16px
+  line-height: 140%
+
+.credit-calc__offer-btn
+  display: flex
+  justify-content: center
+  align-items: center
+  box-sizing: border-box
+  color: $alt-white
+  text-decoration: none
+  background: $main-blue
+  border: none
+  padding: 15px
+  margin-top: 35px
+  width: 100%
+  border-radius: 4px
+  font-family: "Roboto", "Arial", sans-serif
+  font-weight: 500
+  font-size: 16px
+  text-align: center
