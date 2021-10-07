@@ -4,6 +4,7 @@ import AppFooter from '../app-footer/app-footer';
 import React from 'react';
 import Services from '../services/services';
 import CreditCalc from '../credit-calc/credit-calc';
+import MapComponent from '../map/map';
 
 function App() {
   return (
@@ -16,6 +17,7 @@ function App() {
         <PromoBlock/>
         <Services/>
         <CreditCalc/>
+        <MapComponent/>
       </main>
       <footer className="app__footer">
         <AppFooter/>
