@@ -38,6 +38,7 @@
 .credit-calc__application
   grid-column-start: 1
   grid-column-end: -1
+  padding-top: 41px
 
 .credit-calc__select-container svg
   width: 30px
@@ -83,7 +84,8 @@
   &--increase
     right: 0
 
-.credit-calc__input
+.credit-calc__input,
+.credit-calc__application-input
   padding: 17px 60px
   text-align: center
   font-family: "Roboto", "Arial", sans-serif
@@ -182,7 +184,8 @@
   font-size: 16px
   line-height: 140%
 
-.credit-calc__offer-btn
+.credit-calc__offer-btn,
+.credit-calc__application-btn
   display: flex
   justify-content: center
   align-items: center
@@ -199,3 +202,78 @@
   font-weight: 500
   font-size: 16px
   text-align: center
+
+.credit-calc__application-container
+  box-sizing: border-box
+  width: 770px
+  margin: 0 auto
+  padding: 70px
+  background-color: $alt-white
+  display: flex
+  flex-direction: column
+  align-items: center
+
+.credit-calc__step-title
+  margin: 0
+
+.credit-calc__application-list
+  margin: 12px 0 0 0
+  padding: 0
+  list-style: none
+  width: 100%
+
+.credit-calc__application-item
+  display: flex
+  justify-content: space-between
+  align-items: center
+  padding: 14px 0
+  border-bottom: 1px solid $border-grey
+
+.credit-calc__application-name
+  margin: 0
+  font-size: 16px
+  color: $light-grey
+
+.credit-calc__application-result
+  margin: 0
+  font-size: 22px
+  font-weight: 500
+  color: $main-black
+
+.credit-calc__application-form
+  width: 100%
+  display: flex
+  flex-direction: column
+  align-items: center
+
+
+.credit-calc__application-form-list
+  margin: 29px 0 0 0
+  padding: 0
+  list-style: none
+  display: flex
+  flex-wrap: wrap
+  row-gap: 33px
+  column-gap: 30px
+
+.credit-calc__application-form-item
+  flex-basis: 300px
+  &--full-width
+    flex-basis: 100%
+
+.credit-calc__application-input
+  padding: 17px 23px
+  box-sizing: border-box
+  background: transparent
+  text-align: left
+  width: 100%
+
+  &::placeholder
+    color: $dark-grey
+    font-size: 18px
+    font-weight: normal
+
+.credit-calc__application-btn
+  margin-top: 42px
+  width: 198px
+
