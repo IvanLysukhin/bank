@@ -54,6 +54,7 @@
   position: relative
   display: flex
   align-items: center
+  justify-content: center
 
 .credit-calc__label
   font-weight: normal
@@ -94,6 +95,10 @@
   border: 1px solid $main-black
   border-radius: 4px
   flex-grow: 1
+
+  &--error
+    border-color: tomato
+    box-shadow: 0 0 10px 0 tomato
 
   &::-webkit-outer-spin-button,
   &::-webkit-inner-spin-button,
@@ -273,4 +278,17 @@
 .credit-calc__application-btn
   margin-top: 42px
   width: 198px
+
+.credit-calc__error-message
+  position: absolute
+  display: flex
+  align-items: center
+  justify-content: center
+  font-family: "Roboto", "Arial", sans-serif
+  font-weight: 500
+  font-size: 18px
+  width: 50%
+  height: 80%
+  background: white
+  color: tomato
 

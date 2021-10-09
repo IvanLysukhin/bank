@@ -84,53 +84,85 @@ const MAX_PRICE = 25000000;
 const MIN_PRICE = 1200000;
 const PERCENT = 100;
 
+const initialState = {
+  price: MIN_PRICE,
+  initialFee: 0,
+  initialFeePercent: 10,
+};
+
 function CreditCalc() {
   const [menuState, setMenuState] = useState(false);
   const [creditGoal, setCreditGoal] = useState(false);
   const [application, setApplication] = useState(false);
-  const [initialFeePercent, setInitialFeePercent] = useState(0);
-  const [price, setPrice] = useState(MIN_PRICE);
-  const [initialFee, setInitialFee] = useState(price * (initialFeePercent / initialFeePercent));
+
+  const [calcNumbers, setCalcNumbers] = useState(initialState);
+
+  const invalidNumber = calcNumbers.price < MIN_PRICE || calcNumbers.price > MAX_PRICE;
 
   const selectChangeHandler = (data) => {
     setCreditGoal(data.value);
   };
 
   const minusBtnHandler = () => {
-    if (price > MIN_PRICE) {
-      setPrice((prevState) => prevState - 100000);
+    if (calcNumbers.price >= MIN_PRICE) {
+      setCalcNumbers((prevState) => {
+        const price = prevState.price - 100000;
+        const initialFee = price * (prevState.initialFeePercent / PERCENT);
+        return {
+          ...prevState,
+          price,
+          initialFee,
+        };
+      });
     }
   };
 
   const plusBtnHandler = () => {
-    if (price < MAX_PRICE) {
-      setPrice((prevState) => prevState + 100000);
+    if (calcNumbers.price <= MAX_PRICE) {
+      setCalcNumbers((prevState) => {
+        const price = prevState.price + 100000;
+        const initialFee = price * (prevState.initialFeePercent / PERCENT);
+        return {
+          ...prevState,
+          price,
+          initialFee,
+        };
+      });
     }
   };
-  if (price > MAX_PRICE) {
-    setPrice(MAX_PRICE);
-  }
 
-  if (price < MIN_PRICE) {
-    setPrice(MIN_PRICE);
-  }
   const numberInputHandle = ({floatValue}) => {
-    setPrice(floatValue);
+    setCalcNumbers((prevState) => {
+      const initialFee = floatValue * (prevState.initialFeePercent / PERCENT);
+      return {
+        ...prevState,
+        price: floatValue,
+        initialFee,
+      };
+    });
+  };
+  const feeNumberInputHandler = ({floatValue}) => {
+    setCalcNumbers((prevState) => {
+      const initialFee = floatValue;
+      const initialFeePercent = Math.floor((initialFee / prevState.price) * PERCENT);
+      return {
+        ...prevState,
+        initialFee,
+        initialFeePercent,
+      };
+    });
   };
 
   const feeSliderChangeHandler = (data) => {
-    setInitialFeePercent(data);
-    setInitialFee(parseFloat(price * (data / PERCENT)));
+    setCalcNumbers((prevState) => {
+      const initialFee = Math.floor(prevState.price * (data / PERCENT));
+      return {
+        ...prevState,
+        initialFee,
+        initialFeePercent: data,
+      };
+    });
   };
-
-  const feeNumberInputHandler = ({floatValue}) => {
-    setInitialFee(parseFloat(floatValue));
-    setInitialFeePercent(parseFloat((floatValue / price) * PERCENT));
-  };
-  let sliderStep = 1;
-  if (initialFeePercent % 5 === 0) {
-    sliderStep = 5;
-  }
 
   return (
     <section className="credit-calc">
@@ -169,14 +201,15 @@ function CreditCalc() {
                   </svg>
                 </button>
                 <NumberFormat
-                  className="credit-calc__input"
+                  className={`credit-calc__input ${invalidNumber && 'credit-calc__input--error'}`}
                   thousandSeparator={' '}
                   suffix={' рублей'}
                   id="price"
                   name="price"
-                  value={price}
+                  value={calcNumbers.price}
                   onValueChange={numberInputHandle}
                 />
+                {invalidNumber && <span className="credit-calc__error-message">Некорректное значение</span>}
                 <button
                   className="credit-calc__btn credit-calc__btn--increase"
                   area-label="Увеличить"
@@ -199,7 +232,7 @@ function CreditCalc() {
                   id="initialFee"
                   name="initialFee"
                   onValueChange={feeNumberInputHandler}
-                  value={initialFee}
+                  value={calcNumbers.initialFee}
                 />
               </div>
               <div className="credit-calc__scrollbar-container">
@@ -207,7 +240,7 @@ function CreditCalc() {
                   min={10}
                   max={100}
                   handle={handle}
-                  step={sliderStep}
+                  step={5}
                   railStyle={{ backgroundColor: '#C1C2CA', height: 1 }}
                   trackStyle={{ backgroundColor: '#2C36F2', height: 1 }}
                   handleStyle={{
@@ -217,7 +250,7 @@ function CreditCalc() {
                     backgroundColor: '#2C36F2',
                     boxShadow: 'none',
                   }}
-                  value={initialFeePercent}
+                  value={calcNumbers.initialFeePercent}
                   onChange={feeSliderChangeHandler}
                 />
               </div>
