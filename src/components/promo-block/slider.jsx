@@ -19,7 +19,7 @@ function Slider ({onSlideChange}) {
       slidesPerView={1}
       onSlideChange={onSlideChange}
     >
-      <SwiperSlide virtualIndex={1}>
+      <SwiperSlide>
         <div className="promo-block__wrapper">
           <div className="promo-block__content-wrapper">
             <h2 className="app__title promo-block__title">
@@ -31,7 +31,7 @@ function Slider ({onSlideChange}) {
           </div>
         </div>
       </SwiperSlide>
-      <SwiperSlide virtualIndex={2}>
+      <SwiperSlide>
         <div className="promo-block__wrapper promo-block__wrapper--slide-1">
           <div className="promo-block__content-wrapper">
             <h2 className="app__title promo-block__title promo-block__title--dark">
@@ -41,7 +41,7 @@ function Slider ({onSlideChange}) {
           </div>
         </div>
       </SwiperSlide>
-      <SwiperSlide virtualIndex={3}>
+      <SwiperSlide>
         <div className="promo-block__wrapper promo-block__wrapper--slide-2">
           <div className="promo-block__content-wrapper promo-block__content-wrapper--slide-2">
             <h2 className="app__title promo-block__title app__title promo-block__title--dark">

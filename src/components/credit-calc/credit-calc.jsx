@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Slider, { SliderTooltip } from 'rc-slider';
 import 'rc-slider/assets/index.css';
 import Select from 'react-select';
 import NumberFormat from 'react-number-format';
+import CreditOffer from './credit-offer';
 
 const options = [
   { value: 'mortgage', label: 'Ипотечное кредитование' },
@@ -82,12 +83,16 @@ const handle = (props) => {
 
 const MAX_PRICE = 25000000;
 const MIN_PRICE = 1200000;
+const MIN_YEARS = 5;
+const MAX_YEARS = 30;
 const PERCENT = 100;
 
 const initialState = {
   price: MIN_PRICE,
   initialFee: 0,
   initialFeePercent: 10,
+  years: MIN_YEARS,
+  motherCapital: false,
 };
 
 function CreditCalc() {
@@ -163,6 +168,38 @@ function CreditCalc() {
       };
     });
   };
+
+  const yearsSliderChangeHandler = (data) => {
+    setCalcNumbers((prevState) => ({
+      ...prevState,
+      years: data,
+    }));
+  };
+
+  const yearsInputChangeHandler = ({floatValue}) => {
+    setCalcNumbers((prevState) =>
+      ({
+        ...prevState,
+        years: floatValue,
+      }),
+    );
+  };
+
+  const checkboxChangeHandler = ({target}) => {
+    setCalcNumbers((prevState) => ({
+      ...prevState,
+      motherCapital: target.checked,
+    }));
+  };
+
+  const sliderStep = calcNumbers.initialFeePercent % 5 === 0 ? 5 : 1;
+
+  useEffect(() => {
+    setCalcNumbers( {
+      ...calcNumbers,
+      initialFee: Math.floor(calcNumbers.price * (calcNumbers.initialFeePercent / PERCENT)),
+    });
+  }, []);
 
   return (
     <section className="credit-calc">
@@ -240,7 +277,7 @@ function CreditCalc() {
                   min={10}
                   max={100}
                   handle={handle}
-                  step={5}
+                  step={sliderStep}
                   railStyle={{ backgroundColor: '#C1C2CA', height: 1 }}
                   trackStyle={{ backgroundColor: '#2C36F2', height: 1 }}
                   handleStyle={{
@@ -264,6 +301,8 @@ function CreditCalc() {
                   suffix={' лет'}
                   id="loanTerms"
                   name="loanTerms"
+                  onValueChange={yearsInputChangeHandler}
+                  value={calcNumbers.years}
                 />
               </div>
               <div className="credit-calc__scrollbar-container credit-calc__scrollbar-container--time">
@@ -282,38 +321,23 @@ function CreditCalc() {
                     boxShadow: 'none',
                   }}
                   mode={'time'}
+                  value={calcNumbers.years}
+                  onChange={yearsSliderChangeHandler}
                 />
               </div>
             </div>
             <div className="credit-calc__step-container">
-              <input className="visually-hidden credit-calc__checkbox-input" type="checkbox" id="mother" name="mother"/>
+              <input
+                className="visually-hidden credit-calc__checkbox-input"
+                type="checkbox"
+                id="mother"
+                name="mother"
+                onChange={checkboxChangeHandler}
+              />
               <label className="credit-calc__checkbox-label" htmlFor="mother">Использовать материнский капитал</label>
             </div>
           </div>
-          <div className="credit-calc__offer">
-            <div className="credit-calc__offer-container">
-              <h4 className="credit-calc__step-title credit-calc__step-title--offer">Наше предложение</h4>
-              <ul className="credit-calc__offer-list">
-                <li className="credit-calc__offer-item">
-                  <p className="credit-calc__offer-value">1 330 000 рублей </p>
-                  <p className="credit-calc__offer-label">Сумма ипотеки</p>
-                </li>
-                <li className="credit-calc__offer-item">
-                  <p className="credit-calc__offer-value">9,40%</p>
-                  <p className="credit-calc__offer-label">Процентная ставка</p>
-                </li>
-                <li className="credit-calc__offer-item">
-                  <p className="credit-calc__offer-value">27 868 рублей</p>
-                  <p className="credit-calc__offer-label">Ежемесячный платеж</p>
-                </li>
-                <li className="credit-calc__offer-item">
-                  <p className="credit-calc__offer-value">61 929 рублей</p>
-                  <p className="credit-calc__offer-label">Необходимый доход</p>
-                </li>
-              </ul>
-              <button className="credit-calc__offer-btn">Оформить заявку</button>
-            </div>
-          </div>
+          <CreditOffer data={calcNumbers}/>
         </>}
       {application &&
       <div className="credit-calc__application">
