@@ -63,8 +63,9 @@ const { Handle } = Slider;
 
 const handle = (props) => {
   const { value, dragging, index, min, ...restProps } = props;
+
   let overlay = `${value} %`;
-  if (min === 5) {
+  if (min === 5 || min === 1) {
     overlay = `${value} лет`;
   }
 
@@ -82,34 +83,46 @@ const handle = (props) => {
 };
 
 const MAX_PRICE = 25000000;
+const MAX_PRICE_AUTO = 5000000;
 const MIN_PRICE = 1200000;
+const MIN_PRICE_AUTO = 500000;
 const MIN_YEARS = 5;
+const MIN_YEARS_AUTO = 1;
 const MAX_YEARS = 30;
+const MAX_YEARS_AUTO = 5;
 const PERCENT = 100;
-
-const initialState = {
-  price: MIN_PRICE,
-  initialFee: 0,
-  initialFeePercent: 10,
-  years: MIN_YEARS,
-  motherCapital: false,
-};
+const MIN_FEE = 10;
+const MIN_FEE_AUTO = 20;
 
 function CreditCalc() {
-  const [menuState, setMenuState] = useState(false);
   const [creditGoal, setCreditGoal] = useState(false);
-  const [application, setApplication] = useState(false);
 
+  const isMortgageCalc = creditGoal === 'mortgage';
+
+  const initialState = {
+    price: isMortgageCalc ? MIN_PRICE : MIN_PRICE_AUTO,
+    initialFee: 0,
+    initialFeePercent: isMortgageCalc ? MIN_FEE : MIN_FEE_AUTO,
+    years: isMortgageCalc ? MIN_YEARS : MIN_YEARS_AUTO,
+    motherCapital: false,
+    insurance: false,
+    lifeInsurance: false,
+  };
+
+  const [menuState, setMenuState] = useState(false);
+  const [application, setApplication] = useState(false);
   const [calcNumbers, setCalcNumbers] = useState(initialState);
 
-  const invalidNumber = calcNumbers.price < MIN_PRICE || calcNumbers.price > MAX_PRICE;
+  const invalidNumber = calcNumbers.price <
+    (isMortgageCalc ? MIN_PRICE : MIN_PRICE_AUTO) ||
+    calcNumbers.price > (isMortgageCalc ? MAX_PRICE : MAX_PRICE_AUTO);
 
   const selectChangeHandler = (data) => {
     setCreditGoal(data.value);
   };
 
   const minusBtnHandler = () => {
-    if (calcNumbers.price >= MIN_PRICE) {
+    if (calcNumbers.price >= (isMortgageCalc ? MIN_PRICE : MIN_PRICE_AUTO)) {
       setCalcNumbers((prevState) => {
         const price = prevState.price - 100000;
         const initialFee = price * (prevState.initialFeePercent / PERCENT);
@@ -123,7 +136,7 @@ function CreditCalc() {
   };
 
   const plusBtnHandler = () => {
-    if (calcNumbers.price <= MAX_PRICE) {
+    if (calcNumbers.price <= (isMortgageCalc ? MAX_PRICE : MAX_PRICE_AUTO)) {
       setCalcNumbers((prevState) => {
         const price = prevState.price + 100000;
         const initialFee = price * (prevState.initialFeePercent / PERCENT);
@@ -188,10 +201,9 @@ function CreditCalc() {
   const checkboxChangeHandler = ({target}) => {
     setCalcNumbers((prevState) => ({
       ...prevState,
-      motherCapital: target.checked,
+      [target.name]: target.checked,
     }));
   };
-
   const sliderStep = calcNumbers.initialFeePercent % 5 === 0 ? 5 : 1;
 
   useEffect(() => {
@@ -200,6 +212,10 @@ function CreditCalc() {
       initialFee: Math.floor(calcNumbers.price * (calcNumbers.initialFeePercent / PERCENT)),
     });
   }, []);
+
+  useEffect(() => {
+    setCalcNumbers(initialState);
+  }, [creditGoal]);
 
   return (
     <section className="credit-calc">
@@ -226,7 +242,9 @@ function CreditCalc() {
           <div className="credit-calc__step-two">
             <h4 className="credit-calc__step-title">Шаг 2. Введите параметры кредита</h4>
             <div className="credit-calc__step-container">
-              <label className="credit-calc__label" htmlFor="price">Стоимость недвижимости</label>
+              <label className="credit-calc__label" htmlFor="price">
+                Стоимость {isMortgageCalc ? 'недвижимости' : 'автомобиля'}
+              </label>
               <div className="credit-calc__input-container">
                 <button
                   className="credit-calc__btn credit-calc__btn--decrease"
@@ -257,7 +275,9 @@ function CreditCalc() {
                   </svg>
                 </button>
               </div>
-              <p className="credit-calc__warning-info">От 1 200 000  до 25 000 000 рублей</p>
+              <p className="credit-calc__warning-info">
+                {creditGoal === 'mortgage' ? 'От 1 200 000  до 25 000 000 рублей' : 'От 500 000 до 5 000 000 рублей'}
+              </p>
             </div>
             <div className="credit-calc__step-container">
               <label className="credit-calc__label" htmlFor="initialFee">Первоначальный взнос</label>
@@ -274,7 +294,7 @@ function CreditCalc() {
               </div>
               <div className="credit-calc__scrollbar-container">
                 <Slider
-                  min={10}
+                  min={isMortgageCalc ? MIN_FEE : MIN_FEE_AUTO}
                   max={100}
                   handle={handle}
                   step={sliderStep}
@@ -307,8 +327,8 @@ function CreditCalc() {
               </div>
               <div className="credit-calc__scrollbar-container credit-calc__scrollbar-container--time">
                 <Slider
-                  min={5}
-                  max={30}
+                  min={isMortgageCalc ? MIN_YEARS : MIN_YEARS_AUTO}
+                  max={isMortgageCalc ? MAX_YEARS : MAX_YEARS_AUTO}
                   handle={handle}
                   step={1}
                   railStyle={{ backgroundColor: '#C1C2CA', height: 1 }}
@@ -320,24 +340,50 @@ function CreditCalc() {
                     backgroundColor: '#2C36F2',
                     boxShadow: 'none',
                   }}
-                  mode={'time'}
                   value={calcNumbers.years}
                   onChange={yearsSliderChangeHandler}
                 />
               </div>
             </div>
             <div className="credit-calc__step-container">
-              <input
-                className="visually-hidden credit-calc__checkbox-input"
-                type="checkbox"
-                id="mother"
-                name="mother"
-                onChange={checkboxChangeHandler}
-              />
-              <label className="credit-calc__checkbox-label" htmlFor="mother">Использовать материнский капитал</label>
+              <ul className="credit-calc__check-list">
+                {isMortgageCalc ?
+                  <li className="credit-calc__check-item">
+                    <input
+                      className="visually-hidden credit-calc__checkbox-input"
+                      type="checkbox"
+                      id="motherCapital"
+                      name="motherCapital"
+                      onChange={checkboxChangeHandler}
+                    />
+                    <label className="credit-calc__checkbox-label" htmlFor="motherCapital">Использовать материнский капитал</label>
+                  </li> :
+                  <>
+                    <li className="credit-calc__check-item">
+                      <input
+                        className="visually-hidden credit-calc__checkbox-input"
+                        type="checkbox"
+                        id="insurance"
+                        name="insurance"
+                        onChange={checkboxChangeHandler}
+                      />
+                      <label className="credit-calc__checkbox-label" htmlFor="insurance">Оформить КАСКО в нашем банке</label>
+                    </li>
+                    <li className="credit-calc__check-item">
+                      <input
+                        className="visually-hidden credit-calc__checkbox-input"
+                        type="checkbox"
+                        id="lifeInsurance"
+                        name="lifeInsurance"
+                        onChange={checkboxChangeHandler}
+                      />
+                      <label className="credit-calc__checkbox-label" htmlFor="lifeInsurance">Оформить Страхование жизни в нашем банке</label>
+                    </li>
+                  </>}
+              </ul>
             </div>
           </div>
-          <CreditOffer data={calcNumbers}/>
+          <CreditOffer data={calcNumbers} isMortgageCalc={isMortgageCalc}/>
         </>}
       {application &&
       <div className="credit-calc__application">
