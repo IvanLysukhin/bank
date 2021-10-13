@@ -214,6 +214,27 @@ function CreditCalc({sendApplicationHandler}) {
   };
   const sliderStep = calcNumbers.initialFeePercent % 5 === 0 ? 5 : 1;
 
+  const inputBlurHandler = () => {
+    const max = isMortgageCalc ? MAX_YEARS : MAX_YEARS_AUTO;
+    const min = isMortgageCalc ? MIN_YEARS : MIN_YEARS_AUTO;
+    const minFee = isMortgageCalc ? MIN_PAID : MIN_PAID_AUTO;
+
+    if (calcNumbers.years > max) {
+      setCalcNumbers({
+        ...calcNumbers,
+        years: isMortgageCalc ? MAX_YEARS : MAX_YEARS_AUTO,
+      });
+
+    }
+
+    if (calcNumbers.years < min) {
+      setCalcNumbers({
+        ...calcNumbers,
+        years: isMortgageCalc ? MIN_YEARS : MIN_YEARS_AUTO,
+      });
+    }
+  };
+
   useEffect(() => {
     setCalcNumbers(initialState);
   }, [creditGoal]);
@@ -323,6 +344,7 @@ function CreditCalc({sendApplicationHandler}) {
                   id="loanTerms"
                   name="loanTerms"
                   onValueChange={yearsInputChangeHandler}
+                  onBlur={inputBlurHandler}
                   value={calcNumbers.years}
                 />
               </div>
