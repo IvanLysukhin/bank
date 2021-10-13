@@ -1,5 +1,6 @@
 import React, {useMemo} from 'react';
-import {bool, number, shape} from 'prop-types';
+import {bool, number, func, shape} from 'prop-types';
+import {formatNumberToStr} from '../../utils';
 
 const MONTH_COUNT = 12;
 const MOTHER_CAPITAL = 470000;
@@ -9,7 +10,7 @@ const PRICE_LIMIT_ONE = 1000000;
 const MIN_CREDIT_SUM = 500000;
 const MIN_CREDIT_SUM_AUTO = 200000;
 
-function CreditOffer ({data, isMortgageCalc}) {
+function CreditOffer ({data, isMortgageCalc, btnHandler}) {
   const {
     price,
     initialFee,
@@ -20,7 +21,6 @@ function CreditOffer ({data, isMortgageCalc}) {
     lifeInsurance,
   } = data;
 
-  const formatNumber = (num) => new Intl.NumberFormat('ru-RU').format(num);
 
   let loanRate = initialFeePercent < 15 ? 0.094 : 0.085;
 
@@ -37,7 +37,6 @@ function CreditOffer ({data, isMortgageCalc}) {
       loanRate = 0.035;
     }
   }
-
 
   const monthlyLoanRate = loanRate / MONTH_COUNT;
   const creditSum = price - initialFee - (motherCapital && MOTHER_CAPITAL);
@@ -56,7 +55,7 @@ function CreditOffer ({data, isMortgageCalc}) {
             <h4 className="credit-calc__step-title credit-calc__step-title--offer">Наше предложение</h4>
             <ul className="credit-calc__offer-list">
               <li className="credit-calc__offer-item">
-                <p className="credit-calc__offer-value">{formatNumber(price)} {price <= PRICE_LIMIT_TEN ? 'рублей' : '₽'} </p>
+                <p className="credit-calc__offer-value">{formatNumberToStr(price)} {price <= PRICE_LIMIT_TEN ? 'рублей' : '₽'} </p>
                 <p className="credit-calc__offer-label">Сумма ипотеки</p>
               </li>
               <li className="credit-calc__offer-item">
@@ -64,15 +63,20 @@ function CreditOffer ({data, isMortgageCalc}) {
                 <p className="credit-calc__offer-label">Процентная ставка</p>
               </li>
               <li className="credit-calc__offer-item">
-                <p className="credit-calc__offer-value">{formatNumber(monthlyPayment)} {monthlyPayment <= PRICE_LIMIT_ONE ? 'рублей' : '₽'}</p>
+                <p className="credit-calc__offer-value">{formatNumberToStr(monthlyPayment)} {monthlyPayment <= PRICE_LIMIT_ONE ? 'рублей' : '₽'}</p>
                 <p className="credit-calc__offer-label">Ежемесячный платеж</p>
               </li>
               <li className="credit-calc__offer-item">
-                <p className="credit-calc__offer-value">{formatNumber(requiredIncome)} {requiredIncome <= PRICE_LIMIT_ONE ? 'рублей' : '₽'}</p>
+                <p className="credit-calc__offer-value">{formatNumberToStr(requiredIncome)} {requiredIncome <= PRICE_LIMIT_ONE ? 'рублей' : '₽'}</p>
                 <p className="credit-calc__offer-label">Необходимый доход</p>
               </li>
             </ul>
-            <button className="credit-calc__offer-btn">Оформить заявку</button>
+            <button
+              className="credit-calc__offer-btn"
+              onClick={() => {btnHandler();}}
+            >
+              Оформить заявку
+            </button>
           </> :
           <>
             <h4 className="credit-calc__step-title credit-calc__step-title--offer">
@@ -96,6 +100,7 @@ CreditOffer.propTypes = {
     lifeInsurance: bool.isRequired,
   }).isRequired,
   isMortgageCalc: bool.isRequired,
+  btnHandler: func.isRequired,
 };
 
 export default CreditOffer;

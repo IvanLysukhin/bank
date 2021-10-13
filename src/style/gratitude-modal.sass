@@ -1,0 +1,61 @@
+.gratitude-modal
+  position: fixed
+  width: 100%
+  height: inherit
+  display: flex
+  justify-content: center
+  align-items: center
+  background-color: rgba(0,0,0, 0.4)
+  z-index: 1000
+
+.gratitude-modal__container
+  box-sizing: border-box
+  padding: 25px
+  width: 500px
+  height: 193px
+  border-radius: 4px
+  background-color: $alt-white
+  display: flex
+  flex-direction: column
+  justify-content: center
+  align-items: center
+  position: relative
+
+.gratitude-modal__big-text
+  font-weight: 500
+  font-size: 22px
+  line-height: 140%
+  color: $main-black
+  margin: 10px 0 0 0
+
+.gratitude-modal__small-text
+  display: inline-block
+  font-weight: normal
+  font-size: 16px
+  color: $light-grey
+  text-align: center
+  width: 300px
+
+.gratitude-modal__close-button
+  box-sizing: border-box
+  width: 16px
+  height: 16px
+  position: absolute
+  top: 25px
+  right: 25px
+  background-color: transparent
+  border: none
+  display: flex
+  justify-content: center
+  align-items: center
+  cursor: pointer
+
+  &:hover
+    opacity: 0.8
+  &:active
+    opacity: 0.3
+
+  svg
+    position: absolute
+
+

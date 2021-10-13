@@ -4,6 +4,8 @@ import 'rc-slider/assets/index.css';
 import Select from 'react-select';
 import NumberFormat from 'react-number-format';
 import CreditOffer from './credit-offer';
+import Application from './application';
+import {func} from 'prop-types';
 
 const options = [
   { value: 'mortgage', label: 'Ипотечное кредитование' },
@@ -94,7 +96,7 @@ const PERCENT = 100;
 const MIN_FEE = 10;
 const MIN_FEE_AUTO = 20;
 
-function CreditCalc() {
+function CreditCalc({sendApplicationHandler}) {
   const [creditGoal, setCreditGoal] = useState(false);
 
   const isMortgageCalc = creditGoal === 'mortgage';
@@ -112,6 +114,10 @@ function CreditCalc() {
   const [menuState, setMenuState] = useState(false);
   const [application, setApplication] = useState(false);
   const [calcNumbers, setCalcNumbers] = useState(initialState);
+
+  const offerBtnClickHandler = () => {
+    setApplication(true);
+  };
 
   const invalidNumber = calcNumbers.price <
     (isMortgageCalc ? MIN_PRICE : MIN_PRICE_AUTO) ||
@@ -383,74 +389,21 @@ function CreditCalc() {
               </ul>
             </div>
           </div>
-          <CreditOffer data={calcNumbers} isMortgageCalc={isMortgageCalc}/>
+          <CreditOffer data={calcNumbers} isMortgageCalc={isMortgageCalc} btnHandler={offerBtnClickHandler}/>
         </>}
       {application &&
-      <div className="credit-calc__application">
-        <div className="credit-calc__application-container">
-          <h4 className="credit-calc__step-title credit-calc__step-title--offer">Шаг 3. Оформление заявки</h4>
-          <ul className="credit-calc__application-list">
-            <li className="credit-calc__application-item">
-              <p className="credit-calc__application-name">Номер заявки</p>
-              <p className="credit-calc__application-result">№ 0010</p>
-            </li>
-            <li className="credit-calc__application-item">
-              <p className="credit-calc__application-name">Цель кредита</p>
-              <p className="credit-calc__application-result">Ипотека</p>
-            </li>
-            <li className="credit-calc__application-item">
-              <p className="credit-calc__application-name">Стоимость недвижимости</p>
-              <p className="credit-calc__application-result">2 000 000 рублей</p>
-            </li>
-            <li className="credit-calc__application-item">
-              <p className="credit-calc__application-name">Первоначальный взнос</p>
-              <p className="credit-calc__application-result">200 000 рублей</p>
-            </li>
-            <li className="credit-calc__application-item">
-              <p className="credit-calc__application-name">Срок кредитования</p>
-              <p className="credit-calc__application-result">5 лет</p>
-            </li>
-          </ul>
-          <form className="credit-calc__application-form" action="/" method="post">
-            <ul className="credit-calc__application-form-list">
-              <li className="credit-calc__application-form-item credit-calc__application-form-item--full-width">
-                <label className="visually-hidden" htmlFor="userName">Фамилия Имя Отчество</label>
-                <input
-                  className="credit-calc__application-input"
-                  type="text"
-                  id="userName"
-                  name="userName"
-                  placeholder="ФИО"
-                />
-              </li>
-              <li className="credit-calc__application-form-item">
-                <label className="visually-hidden" htmlFor="userPhone">Номер телефона</label>
-                <NumberFormat
-                  className="credit-calc__application-input"
-                  id="userPhone"
-                  name="userPhone"
-                  format={'+7-(###)-##-##'}
-                  placeholder="Телефон"
-                />
-              </li>
-              <li className="credit-calc__application-form-item">
-                <label className="visually-hidden" htmlFor="email">Email</label>
-                <input
-                  className="credit-calc__application-input"
-                  type="email"
-                  id="email"
-                  name="email"
-                  placeholder="E-mail"
-                />
-              </li>
-            </ul>
-            <button className="credit-calc__application-btn">Отправить</button>
-          </form>
-        </div>
-      </div>}
+      <Application
+        results={calcNumbers}
+        type={creditGoal}
+        sendApplicationHandler={sendApplicationHandler}
+      />}
 
     </section>
   );
 }
+
+CreditCalc.propTypes = {
+  sendApplicationHandler: func.isRequired,
+};
 
 export default CreditCalc;
