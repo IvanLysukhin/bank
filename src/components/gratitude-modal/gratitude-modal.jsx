@@ -27,6 +27,12 @@ function GratitudeModal({setGratitudeModalStatus}) {
     };
   }, []);
 
+  useEffect(() => {
+    document.documentElement.style.overflow = 'hidden';
+    return () => {
+      document.documentElement.style.overflow = 'scroll';
+    };
+  });
 
   return (
     <div

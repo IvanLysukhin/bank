@@ -95,6 +95,8 @@ const MAX_YEARS_AUTO = 5;
 const PERCENT = 100;
 const MIN_FEE = 10;
 const MIN_FEE_AUTO = 20;
+const MIN_PAID = 120000;
+const MIN_PAID_AUTO = 100000;
 
 function CreditCalc({sendApplicationHandler}) {
   const [creditGoal, setCreditGoal] = useState(false);
@@ -103,7 +105,7 @@ function CreditCalc({sendApplicationHandler}) {
 
   const initialState = {
     price: isMortgageCalc ? MIN_PRICE : MIN_PRICE_AUTO,
-    initialFee: 0,
+    initialFee: isMortgageCalc ? MIN_PAID : MIN_PAID_AUTO,
     initialFeePercent: isMortgageCalc ? MIN_FEE : MIN_FEE_AUTO,
     years: isMortgageCalc ? MIN_YEARS : MIN_YEARS_AUTO,
     motherCapital: false,
@@ -211,13 +213,6 @@ function CreditCalc({sendApplicationHandler}) {
     }));
   };
   const sliderStep = calcNumbers.initialFeePercent % 5 === 0 ? 5 : 1;
-
-  useEffect(() => {
-    setCalcNumbers( {
-      ...calcNumbers,
-      initialFee: Math.floor(calcNumbers.price * (calcNumbers.initialFeePercent / PERCENT)),
-    });
-  }, []);
 
   useEffect(() => {
     setCalcNumbers(initialState);

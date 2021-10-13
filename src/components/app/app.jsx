@@ -1,7 +1,7 @@
 import AppNav from '../app-nav/app-nav';
 import PromoBlock from '../promo-block/promo-block';
 import AppFooter from '../app-footer/app-footer';
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import Services from '../services/services';
 import CreditCalc from '../credit-calc/credit-calc';
 import MapComponent from '../map/map';

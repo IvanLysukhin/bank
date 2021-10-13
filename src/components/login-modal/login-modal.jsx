@@ -61,6 +61,13 @@ function LoginModal({setLoginModalStatus}) {
     };
   }, []);
 
+  useEffect(() => {
+    document.documentElement.style.overflow = 'hidden';
+    return () => {
+      document.documentElement.style.overflow = 'scroll';
+    };
+  });
+
   return (
     <div
       className="login-modal"

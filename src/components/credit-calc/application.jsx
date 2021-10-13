@@ -1,4 +1,4 @@
-import React, {useState, useEffect, useMemo} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import NumberFormat from 'react-number-format';
 import {formatNumberToStr, saveData} from '../../utils';
 import {string, number, shape, func} from 'prop-types';
@@ -27,7 +27,7 @@ function Application ({results, type, sendApplicationHandler}) {
     });
   };
 
-  const formatedAplicationNumber = useMemo(() => {
+  const formatedAplicationNumber = useCallback(() => {
     if (applicationNumber < 10) {
       return `000${applicationNumber}`;
     }
@@ -53,6 +53,7 @@ function Application ({results, type, sendApplicationHandler}) {
       saveData(userData);
       sendApplicationHandler(true);
       setSaveStatus(true);
+      setApplicationNumber((prevState) => prevState += 1);
     }
   };
 
@@ -64,8 +65,11 @@ function Application ({results, type, sendApplicationHandler}) {
   }, [saveStatus]);
 
   useEffect(() => {
-    setApplicationNumber(JSON.parse(localStorage.getItem('users')).length + 1);
-  });
+    const applicationCount = JSON.parse(localStorage.getItem('users'));
+    if (applicationCount) {
+      setApplicationNumber(applicationCount.length + 1);
+    }
+  }, [applicationNumber]);
 
   return (
     <div className="credit-calc__application">
@@ -74,7 +78,7 @@ function Application ({results, type, sendApplicationHandler}) {
         <ul className="credit-calc__application-list">
           <li className="credit-calc__application-item">
             <p className="credit-calc__application-name">Номер заявки</p>
-            <p className="credit-calc__application-result">№ {formatedAplicationNumber}</p>
+            <p className="credit-calc__application-result">№ {formatedAplicationNumber()}</p>
           </li>
           <li className="credit-calc__application-item">
             <p className="credit-calc__application-name">Цель кредита</p>
