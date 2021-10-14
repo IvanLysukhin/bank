@@ -7,10 +7,14 @@
   display: grid
   grid-template-columns: 252px 144px 196px 157px 102px
   grid-column-gap: 80px
+  @media (max-width: 1023px)
+    display: none
 
 .app-footer__item
   &--contact
     padding-top: 21px
+    @media (max-width: 1023px)
+      margin-bottom: 5px
 
 .app-footer__license-text,
 .app-footer__message-text
@@ -28,6 +32,9 @@
 
 .app-footer__services-list
   padding: 18px 0
+  @media (max-width: 1023px)
+    padding: 11px 0
+    margin-bottom: 8px
 
 .app-footer__services-item
   margin-bottom: 12px
@@ -68,3 +75,13 @@
 
 .app-footer__contact-link:hover path
   fill: $main-blue
+
+
+.app-footer__mobile
+  display: none
+  @media (max-width: 1023px)
+    width: 90%
+    margin: 0 auto
+    display: grid
+    grid-template-columns: max-content max-content
+    column-gap: 103px

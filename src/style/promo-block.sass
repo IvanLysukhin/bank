@@ -6,6 +6,7 @@
   background-repeat: no-repeat
   background-position: center
   margin-bottom: 60px
+
   &--slide-1
     background: linear-gradient(to right, #DDE2EC, #F3F8FF)
     .swiper-pagination-bullet
@@ -24,20 +25,32 @@
       opacity: 0.2
       background: $main-black
 
+  @media (max-width: 1023px)
+    margin-bottom: 0
+
 
 .promo-block__wrapper
   width: 1366px
   margin: 0 auto
+
+  @media (max-width: 1023px)
+    width: 768px
 
   &--slide-1
     background-color: transparent
     background-image: url("../img/slide-2.jpg")
     height: 400px
 
+    @media (max-width: 1023px)
+      height: 300px
+      background-image: url("../img/slide-2-tablet.jpg")
+
   &--slide-2
     background-color: transparent
     background-image: url("../img/slide-3.jpg")
-    height: 400px
+    @media (max-width: 1023px)
+      height: 300px
+      background-image: url("../img/slide-3-tablet.jpg")
 
 .promo-block__content-wrapper
   width: 933px
@@ -46,6 +59,12 @@
   display: grid
   grid-template-columns: 1fr 1fr
   grid-template-rows: auto auto
+
+  @media (max-width: 1023px)
+    width: 100%
+    box-sizing: border-box
+    padding: 65px 0 0 27px
+    grid-template-columns: max-content max-content
 
   &--slide-2
     grid-template-columns: 1fr
@@ -59,6 +78,12 @@
   padding: 56px 0 0 38px
   height: 55px
 
+  @media (max-width: 1023px)
+    font-size: 18px
+    padding: 15px 0 0 62px
+    line-height: 22px
+
+
   &--dark
     color: $main-black
 
@@ -69,12 +94,22 @@
   margin-bottom: 4px
   display: block
 
+  @media (max-width: 1023px)
+    font-size: 46px
+
 .promo-block__pic
   width: 444px
   height: 286px
   grid-column-start: 2
   grid-row-start: 1
   grid-row-end: 3
+
+  @media (max-width: 1023px)
+    width: 342px
+    height: 219px
+    margin-top: -21px
+    margin-left: 48px
+
 
 .promo-block__link
   color: $main-black
@@ -88,6 +123,15 @@
   height: 16px
   text-align: center
   margin-left: 37px
+
+  @media (max-width: 1023px)
+     font-size: 16px
+     padding: 15px 16px 21px 21px
+     width: 168px
+     height: 16px
+     margin-left: 62px
+     margin-top: 12px
+
 
   &:hover
     color: $main-blue

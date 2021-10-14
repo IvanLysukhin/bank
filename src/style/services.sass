@@ -2,11 +2,17 @@
   width: 1170px
   margin: 0 auto
 
+  @media (max-width: 1023px)
+    width: 100%
+
 .services__tabs-list
   display: flex
   list-style: none
   padding: 0
   margin: 0
+
+  @media (max-width: 1023px)
+    display: none
 
 .services__tab
   box-sizing: border-box
@@ -38,6 +44,9 @@
   box-sizing: border-box
   height: 410px
 
+  @media (max-width: 1023px)
+    display: none
+
 .services__info-text
   font-weight: 500
   color: $main-black
@@ -45,12 +54,17 @@
   line-height: 140%
   margin: -7px 0 0 0
 
+  @media (max-width: 1023px)
+    font-size: 18px
+
 .services__info-list
   padding: 0
   margin-top: 27px
   list-style: none
   font-size: 18px
   font-weight: normal
+  @media (max-width: 1023px)
+    font-size: 16px
 
 .services__info-item
   padding-left: 21px
@@ -86,6 +100,10 @@
   text-align: center
   margin-top: 35px
 
+  @media (max-width: 1023px)
+    margin-top: 29px
+
+
 .services__text
   font-size: 18px
   font-weight: normal
@@ -104,3 +122,29 @@
     margin: -10px 0 0 0
   &--phone
     margin: -10px 0 0 0
+
+.services__slider
+  display: none
+  @media (max-width: 1023px)
+    display: block
+    width: 100%
+    background: $alt-white
+    .swiper-pagination
+      padding-bottom: 0
+    .swiper-pagination-bullet
+      background-color: $main-blue
+      opacity: 1
+    .swiper-pagination-bullet-active
+      background-color: #E0E0E0
+
+.services__slide
+  @media (max-width: 1023px)
+    background: $alt-white
+    display: grid
+    grid-template-columns: auto auto
+    box-sizing: border-box
+    height: 380px
+    padding: 64px 45px
+
+.services__info
+  margin-right: 38px

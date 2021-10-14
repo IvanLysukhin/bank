@@ -1,4 +1,7 @@
 import React,  {useState} from 'react';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import SwiperCore, { Pagination, Autoplay } from 'swiper';
+import 'swiper/swiper-bundle.css';
 
 const TabType = {
   DEPOSIT: 'DEPOSIT',
@@ -171,6 +174,97 @@ function Services() {
       </ul>
       <div className="services__container">
         {element}
+      </div>
+      <div className="services__slider">
+        <Swiper
+          pagination={{
+            clickable: true,
+          }}
+          spaceBetween={0}
+          slidesPerView={1}
+        >
+          <SwiperSlide className="services__slide">
+            <div className="services__info">
+              <p className="services__info-text">Вклады Лига Банка – это выгодная<br/> инвестиция в свое будущее</p>
+              <ul className="services__info-list">
+                <li className="services__info-item">
+                  Проценты по вкладам до 7%
+                </li>
+                <li className="services__info-item">
+                  Разнообразные условия
+                </li>
+                <li className="services__info-item">
+                  Возможность ежемесячной капитализации<br/> или вывод процентов на банковскую карту
+                </li>
+              </ul>
+              <a className="services__info-btn" href="/">Узнать подробнее</a>
+            </div>
+            <div className="services__slide-picture">
+              <img src="../../img/piggybank-tablet.jpg" width="289" height="260" alt="Вклады"/>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide className="services__slide">
+            <div className="services__info">
+              <p className="services__info-text">Лига Банк выдает кредиты<br/> под любые цели</p>
+              <ul className="services__info-list">
+                <li className="services__info-item">
+                  Ипотечный кредит
+                </li>
+                <li className="services__info-item">
+                  Автокредит
+                </li>
+                <li className="services__info-item">
+                  Потребительский кредит
+                </li>
+              </ul>
+              <p className="services__text">Рассчитайте ежемесячный платеж<br/> и ставку по кредиту воспользовавшись<br/> нашим
+                <a className="services__info-text-link" href="/">&nbsp;кредитным калькулятором</a>
+              </p>
+            </div>
+            <div className="services__slide-picture services__slide-picture--car">
+              <img src="../../img/car-tablet.jpg" width="289" height="260" alt="Вклады"/>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide className="services__slide">
+            <div className="services__info">
+              <p className="services__info-text">Лига Страхование — застрахуем<br/> все что захотите</p>
+              <ul className="services__info-list">
+                <li className="services__info-item">
+                  Автомобильное страхование
+                </li>
+                <li className="services__info-item">
+                  Страхование жизни и здоровья
+                </li>
+                <li className="services__info-item">
+                  Страхование недвижимости
+                </li>
+              </ul>
+              <a className="services__info-btn" href="/">Узнать подробнее</a>
+            </div>
+            <div className="services__slide-picture services__slide-picture--lock">
+              <img src="../../img/lock-tablet.png" width="289" height="260" alt="Вклады"/>
+            </div>
+          </SwiperSlide>
+          <SwiperSlide className="services__slide">
+            <div className="services__info">
+              <p className="services__info-text">Лига Банк — это огромное количество онлайн-сервисов для вашего удобства</p>
+              <ul className="services__info-list">
+                <li className="services__info-item">
+                  Мобильный банк,<br/>
+                  который всегда под рукой
+                </li>
+                <li className="services__info-item">
+                  Приложение Лига-проездной позволит<br/>
+                  вам оплачивать билеты по всему миру
+                </li>
+              </ul>
+              <a className="services__info-btn" href="/">Узнать подробнее</a>
+            </div>
+            <div className="services__slide-picture services__slide-picture--phone">
+              <img src="../../img/phone-tablet.png" width="289" height="260" alt="Вклады"/>
+            </div>
+          </SwiperSlide>
+        </Swiper>
       </div>
     </section>
   );

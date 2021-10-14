@@ -17,9 +17,6 @@ body
   display: grid
   grid-template-rows: min-content min-content auto
 
-  &--scroll-off
-    overflow-y: hidden
-
 .app__title
   margin: 0
 
@@ -37,6 +34,9 @@ body
 .app__footer
   background-color: $alt-white
   padding-bottom: 15px
+
+  @media (max-width: 1023px)
+    padding-bottom: 5px
 
 .app__footer
   margin-top: 102px

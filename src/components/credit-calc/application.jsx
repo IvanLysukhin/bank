@@ -74,7 +74,7 @@ function Application ({results, type, sendApplicationHandler}) {
   return (
     <div className="credit-calc__application">
       <div className="credit-calc__application-container">
-        <h4 className="credit-calc__step-title credit-calc__step-title--offer">Шаг 3. Оформление заявки</h4>
+        <h4 className="credit-calc__step-title credit-calc__step-title--application">Шаг 3. Оформление заявки</h4>
         <ul className="credit-calc__application-list">
           <li className="credit-calc__application-item">
             <p className="credit-calc__application-name">Номер заявки</p>

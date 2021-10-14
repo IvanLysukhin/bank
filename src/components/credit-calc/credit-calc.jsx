@@ -217,7 +217,6 @@ function CreditCalc({sendApplicationHandler}) {
   const inputBlurHandler = () => {
     const max = isMortgageCalc ? MAX_YEARS : MAX_YEARS_AUTO;
     const min = isMortgageCalc ? MIN_YEARS : MIN_YEARS_AUTO;
-    const minFee = isMortgageCalc ? MIN_PAID : MIN_PAID_AUTO;
 
     if (calcNumbers.years > max) {
       setCalcNumbers({
