@@ -10,6 +10,11 @@
   @media (max-width: 1023px)
     width: 89%
 
+  @media (max-width: 767px)
+    padding: 0
+    width: 95%
+    justify-content: flex-start
+
 .app-nav__list
   display: flex
   justify-content: flex-start
@@ -20,11 +25,36 @@
     padding: 0
     font-size: 14px
     margin-left: 64px
+  @media (max-width: 767px)
+    display: none
+
+    &--open
+      position: absolute
+      top: 50px
+      left: 0
+      right: 0
+      display: flex
+      flex-direction: column
+      width: 100%
+      background-color: $alt-white
+      margin: 0
+      z-index: 1000
+      padding-top: 30px
+      height: 100vh
+      overflow-y: hidden
 
 .app-nav__item
   margin-right: 10px
   @media (max-width: 1023px)
     margin-right: 20px
+
+  @media (max-width: 767px)
+    width: 90%
+    margin: 0 auto
+    padding: 20px 0
+    border-bottom: 1px solid $border-grey
+    &:first-of-type
+      border-top: 1px solid $border-grey
 
 .app-nav__link
   display: block
@@ -42,6 +72,10 @@
     color: $main-black-opacity
     box-shadow: inset 1px 1px 3px 0 $main-blue-opacity
 
+  @media (max-width: 767px)
+    margin-left: 14px
+    font-size: 16px
+
   @media (max-width: 1023px)
     padding: 0
 
@@ -49,9 +83,26 @@
   padding: 5px 0 5px 31px
   color: $main-black
   position: relative
+  &--in-list
+    display: none
   @media (max-width: 1023px)
     font-size: 0
     padding: 0
+
+  @media (max-width: 768px)
+    margin-left: auto
+
+    &--in-list
+      margin-left: 14px
+      font-size: 16px
+      display: flex
+      padding-left: 30px
+
+      svg
+        left: 0
+        top: -2px
+        width: 20px
+        height: 22px
 
   &:hover
     color: $main-blue
@@ -66,6 +117,26 @@
   @media (max-width: 1023px)
     left: -18px
     top: -13px
+  @media (max-width: 768px)
+    width: 14px
+    height: 16px
+    left: -21px
+    top: -8px
 
 .app-nav__log-in:hover path
   fill: $main-blue
+
+.app-nav__burger-btn
+  display: none
+  @media (max-width: 768px)
+    display: flex
+    justify-content: center
+    align-items: center
+    background-color: transparent
+    border: none
+    margin-right: 10px
+
+.app-nav__close
+  position: absolute
+  top: -9px
+  right: 8px
