@@ -1,13 +1,7 @@
 import React,  {useState} from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
-
-const TabType = {
-  DEPOSIT: 'DEPOSIT',
-  CREDIT: 'CREDIT',
-  INSURANCE: 'INSURANCE',
-  ONLINE: 'ONLINE',
-};
+import {TabType} from '../../constants';
 
 function Services() {
   const [tab, setTab] = useState(TabType.DEPOSIT);

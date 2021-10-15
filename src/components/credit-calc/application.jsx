@@ -2,6 +2,7 @@ import React, {useState, useEffect, useCallback} from 'react';
 import NumberFormat from 'react-number-format';
 import {formatNumberToStr, saveData} from '../../utils';
 import {string, number, shape, func} from 'prop-types';
+import {HUNDREDS, TENS, THOUSANDS} from '../../constants';
 
 const initialState = {
   userPhone: '',
@@ -28,16 +29,16 @@ function Application ({results, type, sendApplicationHandler}) {
   };
 
   const formatedAplicationNumber = useCallback(() => {
-    if (applicationNumber < 10) {
+    if (applicationNumber < TENS) {
       return `000${applicationNumber}`;
     }
-    if (applicationNumber >= 10 && applicationNumber < 100) {
+    if (applicationNumber >= TENS && applicationNumber < HUNDREDS) {
       return `00${applicationNumber}`;
     }
-    if (applicationNumber >= 100 && applicationNumber < 1000) {
+    if (applicationNumber >= HUNDREDS && applicationNumber < THOUSANDS) {
       return `0${applicationNumber}`;
     }
-    if (applicationNumber >= 1000) {
+    if (applicationNumber >= THOUSANDS) {
       return `${applicationNumber}`;
     }
   }, [applicationNumber]);

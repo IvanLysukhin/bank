@@ -6,6 +6,21 @@ import NumberFormat from 'react-number-format';
 import CreditOffer from './credit-offer';
 import Application from './application';
 import {func} from 'prop-types';
+import {
+  MAX_PRICE,
+  MAX_PRICE_AUTO,
+  MIN_PRICE,
+  MIN_PRICE_AUTO,
+  MIN_YEARS,
+  MIN_YEARS_AUTO,
+  MAX_YEARS,
+  MAX_YEARS_AUTO,
+  PERCENT,
+  MIN_FEE,
+  MIN_FEE_AUTO,
+  MIN_PAID,
+  MIN_PAID_AUTO
+} from '../../constants';
 
 const options = [
   { value: 'mortgage', label: 'Ипотечное кредитование' },
@@ -83,20 +98,6 @@ const handle = (props) => {
     </SliderTooltip>
   );
 };
-
-const MAX_PRICE = 25000000;
-const MAX_PRICE_AUTO = 5000000;
-const MIN_PRICE = 1200000;
-const MIN_PRICE_AUTO = 500000;
-const MIN_YEARS = 5;
-const MIN_YEARS_AUTO = 1;
-const MAX_YEARS = 30;
-const MAX_YEARS_AUTO = 5;
-const PERCENT = 100;
-const MIN_FEE = 10;
-const MIN_FEE_AUTO = 20;
-const MIN_PAID = 120000;
-const MIN_PAID_AUTO = 100000;
 
 function CreditCalc({sendApplicationHandler}) {
   const [creditGoal, setCreditGoal] = useState(false);

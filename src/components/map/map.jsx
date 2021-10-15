@@ -1,17 +1,8 @@
 import React from 'react';
 import {YMaps, Map, Placemark} from 'react-yandex-maps';
 import {object} from 'prop-types';
+import {CENTER, CITIES, DEFAULT_ZOOM} from '../../constants';
 
-export const CENTER = [54.7430600, 55.9677900];
-export const DEFAULT_ZOOM = 5;
-
-const MOSCOW = [55.7522200, 37.6155600];
-const SARATOV = [51.5405600, 46.0086100];
-const KAZAN = [55.7887400, 49.1221400];
-const TUMEN = [57.1522200,  65.5272200];
-const OMSK = [54.9924400, 73.3685900];
-
-const CITIES = [MOSCOW, SARATOV, KAZAN, TUMEN, OMSK];
 
 function MapComponent({link}) {
   return (

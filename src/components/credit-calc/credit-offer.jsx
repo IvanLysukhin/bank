@@ -1,14 +1,16 @@
 import React, {useMemo} from 'react';
 import {bool, number, func, shape} from 'prop-types';
 import {formatNumberToStr} from '../../utils';
+import {
+  MONTH_COUNT,
+  MOTHER_CAPITAL,
+  REQUIRED_INCOME_PERCENT,
+  PRICE_LIMIT_TEN,
+  PRICE_LIMIT_ONE,
+  MIN_CREDIT_SUM,
+  MIN_CREDIT_SUM_AUTO
+} from '../../constants';
 
-const MONTH_COUNT = 12;
-const MOTHER_CAPITAL = 470000;
-const REQUIRED_INCOME_PERCENT = 0.45;
-const PRICE_LIMIT_TEN = 10000000;
-const PRICE_LIMIT_ONE = 1000000;
-const MIN_CREDIT_SUM = 500000;
-const MIN_CREDIT_SUM_AUTO = 200000;
 
 function CreditOffer ({data, isMortgageCalc, btnHandler}) {
   const {
