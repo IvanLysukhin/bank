@@ -1,5 +1,5 @@
 import React from 'react';
-import {func} from 'prop-types';
+import {func, number} from 'prop-types';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import SwiperCore, { Pagination, Autoplay } from 'swiper';
 import 'swiper/swiper-bundle.css';
@@ -8,7 +8,14 @@ SwiperCore.use([Pagination, Autoplay]);
 
 const SLIDE_TIMEOUT = 4000;
 
-function Slider ({onSlideChange}) {
+function Slider ({onSlideChange, mapY}) {
+
+  const locationBtnClick = (evt) => {
+    evt.preventDefault();
+    console.log(mapY);
+    window.scrollBy(0, mapY);
+  };
+
   return (
     <Swiper
       pagination={{
@@ -48,7 +55,13 @@ function Slider ({onSlideChange}) {
               <span className="promo-block__big-text">Лига Банк</span><br/>
               Всегда рядом
             </h2>
-            <a className="app__link promo-block__link promo-block__link--blue promo-block__link--wide" href="#">Найти отделение</a>
+            <a
+              className="app__link promo-block__link promo-block__link--blue promo-block__link--wide"
+              href="/"
+              onClick={locationBtnClick}
+            >
+              Найти отделение
+            </a>
           </div>
         </div>
       </SwiperSlide>
@@ -58,6 +71,7 @@ function Slider ({onSlideChange}) {
 
 Slider.propTypes = {
   onSlideChange: func.isRequired,
+  mapY: number.isRequired,
 };
 
 export default Slider;

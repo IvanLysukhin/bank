@@ -1,5 +1,6 @@
 import React from 'react';
 import {YMaps, Map, Placemark} from 'react-yandex-maps';
+import {object} from 'prop-types';
 
 export const CENTER = [54.7430600, 55.9677900];
 export const DEFAULT_ZOOM = 5;
@@ -12,9 +13,9 @@ const OMSK = [54.9924400, 73.3685900];
 
 const CITIES = [MOSCOW, SARATOV, KAZAN, TUMEN, OMSK];
 
-function MapComponent() {
+function MapComponent({link}) {
   return (
-    <section className="map">
+    <section className="map" ref={link}>
       <h2 className="map__title">Отделения Лига Банка</h2>
       <div className="map__box">
         <YMaps>
@@ -38,5 +39,7 @@ function MapComponent() {
     </section>
   );
 }
+
+MapComponent.propTypes = {link: object.isRequired};
 
 export default MapComponent;

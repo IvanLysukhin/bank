@@ -1,8 +1,9 @@
 import React, {useState} from 'react';
 import 'swiper/swiper-bundle.css';
 import Slider from './slider';
+import {number} from 'prop-types';
 
-function PromoBlock() {
+function PromoBlock({mapY}) {
   const [slide, setSlide] = useState(0);
 
   let promoBlockClass = '';
@@ -25,9 +26,13 @@ function PromoBlock() {
 
   return (
     <section className={`app__section promo-block ${promoBlockClass}`}>
-      <Slider onSlideChange={onSlideChange}/>
+      <Slider onSlideChange={onSlideChange} mapY={mapY}/>
     </section>
   );
 }
+
+PromoBlock.propTypes = {
+  mapY: number.isRequired,
+};
 
 export default PromoBlock;
