@@ -90,7 +90,7 @@ function AppFooter() {
           </ul>
         </div>
         <div className="app-footer__mobile-container app-footer__mobile-container--right">
-          <ul className="app__list">
+          <ul className="app__list app__contacts-list">
             <li className="app-footer__item app-footer__item--contact">
               <a className="app__link app-footer__contact-link app-footer__contact-link--message" href="tel:*0904">
                 <svg className="app-footer__contact-icon" width="10" height="16" viewBox="0 0 10 16" fill="none" xmlns="http://www.w3.org/2000/svg">

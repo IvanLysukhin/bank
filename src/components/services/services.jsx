@@ -185,7 +185,7 @@ function Services() {
         >
           <SwiperSlide className="services__slide">
             <div className="services__info">
-              <p className="services__info-text">Вклады Лига Банка – это выгодная<br/> инвестиция в свое будущее</p>
+              <p className="services__info-text">Вклады Лига Банка – это выгодная<br className="services__text-shift"/> инвестиция в свое будущее</p>
               <ul className="services__info-list">
                 <li className="services__info-item">
                   Проценты по вкладам до 7%
@@ -194,13 +194,16 @@ function Services() {
                   Разнообразные условия
                 </li>
                 <li className="services__info-item">
-                  Возможность ежемесячной капитализации<br/> или вывод процентов на банковскую карту
+                  Возможность ежемесячной капитализации<br className="services__text-shift"/> или вывод процентов на банковскую карту
                 </li>
               </ul>
               <a className="services__info-btn" href="/">Узнать подробнее</a>
             </div>
-            <div className="services__slide-picture">
-              <img src="../../img/piggybank-tablet.jpg" width="289" height="260" alt="Вклады"/>
+            <div className="services__slide-picture services__slide-picture--mobile">
+              <picture>
+                <source srcSet="../../img/piggybank-mobile.jpg" media="(max-width: 767px)"/>
+                <img src="../../img/piggybank-tablet.jpg" width="289" height="260" alt="Вклады"/>
+              </picture>
             </div>
           </SwiperSlide>
           <SwiperSlide className="services__slide">
@@ -221,8 +224,11 @@ function Services() {
                 <a className="services__info-text-link" href="/">&nbsp;кредитным калькулятором</a>
               </p>
             </div>
-            <div className="services__slide-picture services__slide-picture--car">
-              <img src="../../img/car-tablet.jpg" width="289" height="260" alt="Вклады"/>
+            <div className="services__slide-picture services__slide-picture--car services__slide-picture--mobile">
+              <picture>
+                <source srcSet="../../img/car-mobile.jpg" media="(max-width: 767px)"/>
+                <img src="../../img/car-tablet.jpg" width="289" height="260" alt="Вклады"/>
+              </picture>
             </div>
           </SwiperSlide>
           <SwiperSlide className="services__slide">
@@ -241,8 +247,11 @@ function Services() {
               </ul>
               <a className="services__info-btn" href="/">Узнать подробнее</a>
             </div>
-            <div className="services__slide-picture services__slide-picture--lock">
-              <img src="../../img/lock-tablet.png" width="289" height="260" alt="Вклады"/>
+            <div className="services__slide-picture services__slide-picture--lock services__slide-picture--mobile">
+              <picture>
+                <source srcSet="../../img/lock-mobile.png" media="(max-width: 767px)"/>
+                <img src="../../img/lock-tablet.png" width="289" height="260" alt="Вклады"/>
+              </picture>
             </div>
           </SwiperSlide>
           <SwiperSlide className="services__slide">
@@ -260,8 +269,11 @@ function Services() {
               </ul>
               <a className="services__info-btn" href="/">Узнать подробнее</a>
             </div>
-            <div className="services__slide-picture services__slide-picture--phone">
-              <img src="../../img/phone-tablet.png" width="289" height="260" alt="Вклады"/>
+            <div className="services__slide-picture services__slide-picture--phone services__slide-picture--mobile">
+              <picture>
+                <source srcSet="../../img/phone-mobile.png" media="(max-width: 767px)"/>
+                <img src="../../img/phone-tablet.png" width="289" height="260" alt="Вклады"/>
+              </picture>
             </div>
           </SwiperSlide>
         </Swiper>

@@ -12,6 +12,9 @@
     flex-direction: column
     padding-top: 68px
 
+  @media (max-width: 767px)
+    padding-top: 53px
+
 
 .credit-calc__main-title
   grid-row-start: 1
@@ -25,6 +28,10 @@
   @media (max-width: 1023px)
     font-size: 32px
 
+  @media (max-width: 767px)
+    font-size: 22px
+    margin: 0 0 16px 0
+
 .credit-calc__step-title
   font-weight: 500
   font-size: 22px
@@ -34,22 +41,33 @@
     font-size: 18px
     margin: 8px 0 22px 0
 
+  @media (max-width: 767px)
+    font-size: 16px
+
   &--offer
     margin: 0
     @media (max-width: 1023px)
       margin: 0
       font-size: 22px
+    @media (max-width: 767px)
+      font-size: 18px
 
   &--application
     @media (max-width: 1023px)
       font-size: 18px
       margin: 24px 0 14px 0
+    @media (max-width: 767px)
+      font-size: 16px
+      margin: 8px 0 14px 0
 
 .credit-calc__step-one
   margin-bottom: 10px
 
   @media (max-width: 1023px)
     margin-bottom: 30px
+
+  @media (max-width: 767px)
+    margin-bottom: 17px
 
 .credit-calc__step-two
   grid-column-start: 1
@@ -64,6 +82,9 @@
   @media (max-width: 1023px)
     background-color: $alt-white
     margin-top: 21px
+
+  @media (max-width: 767px)
+    margin-top: -20px
 
 .credit-calc__application
   grid-column-start: 1
@@ -126,6 +147,10 @@
   border-radius: 4px
   flex-grow: 1
 
+  @media (max-width: 767px)
+    font-size: 16px
+    padding: 17px 50px
+
   &--error
     border-color: tomato
     box-shadow: 0 0 10px 0 tomato
@@ -147,6 +172,9 @@
   @media (max-width: 1023px)
     margin-bottom: 22px
     margin-top: -5px
+  @media (max-width: 767px)
+    margin-bottom: 29px
+    margin-top: -12px
 
   &--time
     margin-top: 44px
@@ -204,6 +232,9 @@
     margin: 0
     padding: 55px 60px
 
+    @media (max-width: 1023px)
+      padding: 37px 12px
+
 .credit-calc__offer-list
   list-style: none
   padding: 0
@@ -218,6 +249,13 @@
     grid-column-gap: 52px
     grid-template-columns: max-content max-content
 
+  @media (max-width: 767px)
+    display: flex
+    flex-direction: column
+    row-gap: 12px
+
+
+
 .credit-calc__offer-value,
 .credit-calc__offer-label
   margin: 0
@@ -227,6 +265,9 @@
   font-weight: 500
   font-size: 22px
   line-height: 140%
+
+  @media (max-width: 767px)
+    font-size: 18px
 
 .credit-calc__offer-label
   color: $light-grey
@@ -279,6 +320,8 @@
   padding: 0
   list-style: none
   width: 100%
+  @media (max-width: 767px)
+    margin-top: 8px
 
 .credit-calc__application-item
   display: flex
@@ -286,6 +329,10 @@
   align-items: center
   padding: 14px 0
   border-bottom: 1px solid $border-grey
+  @media (max-width: 767px)
+    flex-direction: column
+    align-items: flex-start
+    padding: 17px 0
 
 
 
@@ -293,12 +340,17 @@
   margin: 0
   font-size: 16px
   color: $light-grey
-
+  @media (max-width: 767px)
+    order: 2
 .credit-calc__application-result
   margin: 0
   font-size: 22px
   font-weight: 500
   color: $main-black
+
+  @media (max-width: 767px)
+    font-size: 18px
+    order: 1
 
 .credit-calc__application-form
   width: 100%
@@ -315,6 +367,9 @@
   flex-wrap: wrap
   row-gap: 33px
   column-gap: 30px
+
+  @media (max-width: 767px)
+    row-gap: 25px
 
 .credit-calc__application-form-item
   flex-basis: 300px
@@ -342,6 +397,9 @@
 
   @media (max-width: 1023px)
     width: 100%
+
+  @media (max-width: 767px)
+    margin-top: 35px
 
 .credit-calc__error-message
   position: absolute

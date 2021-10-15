@@ -56,6 +56,8 @@
 
   @media (max-width: 1023px)
     font-size: 18px
+  @media (max-width: 767px)
+    font-size: 16px
 
 .services__info-list
   padding: 0
@@ -66,12 +68,18 @@
   @media (max-width: 1023px)
     font-size: 16px
 
+  @media (max-width: 767px)
+    font-size: 14px
+    margin-top: 22px
+
 .services__info-item
   padding-left: 21px
   position: relative
   max-width: 380px
   &:not(:last-of-type)
     margin-bottom: 17px
+    @media (max-width: 767px)
+      margin-bottom: 13px
 
   &:before
     content: ""
@@ -82,6 +90,16 @@
     left: -2px
     width: 15px
     height: 10px
+    @media (max-width: 767px)
+      background-size: 8px 6px
+      width: 8px
+      height: 6px
+      left: 0
+
+  @media (max-width: 767px)
+    padding-left: 15px
+    display: inline-block
+    width: 215px
 
 .services__info-btn
   display: flex
@@ -103,6 +121,11 @@
   @media (max-width: 1023px)
     margin-top: 29px
 
+  @media (max-width: 767px)
+    margin: 26px 0 0 0
+    width: 100%
+    font-size: 14px
+    height: 43px
 
 .services__text
   font-size: 18px
@@ -112,8 +135,12 @@
   width: 350px
   margin: 30px 0 0 0
 
+  @media (max-width: 767px)
+    font-size: 14px
+
 .services__info-text-link
   color: $main-black
+  font-weight: 500
 
 .services__picture
   &--car
@@ -146,5 +173,27 @@
     height: 380px
     padding: 64px 45px
 
+  @media (max-width: 767px)
+    padding: 62px 15px
+    height: 362px
+
 .services__info
   margin-right: 38px
+  @media (max-width: 767px)
+    margin-right: 0
+
+.services__slide-picture
+   &--mobile
+     @media (max-width: 767px)
+       position: absolute
+       right: 0
+       top: 100px
+       z-index: 2
+       img
+         width: 82px
+         height: 113px
+
+
+.services__text-shift
+  @media (max-width: 767px)
+    display: none

@@ -15,7 +15,13 @@
     padding-top: 21px
     @media (max-width: 1023px)
       margin-bottom: 5px
+    @media (max-width: 767px)
+      padding: 0
+      margin-bottom: 20px
 
+  &--license-text
+    @media (max-width: 767px)
+      display: none
 .app-footer__license-text,
 .app-footer__message-text
   font-weight: normal
@@ -29,6 +35,8 @@
   &--phone
     display: block
     padding-left: 34px
+    @media (max-width: 767px)
+       padding-right: 92px
 
 .app-footer__services-list
   padding: 18px 0
@@ -44,6 +52,9 @@
   font-size: 16px
   color: $main-black
   cursor: pointer
+
+  @media (max-width: 767px)
+      font-size: 14px
 
   &:hover
     color: $main-blue
@@ -86,4 +97,9 @@
     grid-template-columns: max-content max-content
     column-gap: 103px
   @media (max-width: 768px)
-    display: none
+    display: flex
+    flex-direction: column
+
+.app__contacts-list
+  @media (max-width: 768px)
+    margin: -20px 0 0 0

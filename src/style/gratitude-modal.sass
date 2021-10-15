@@ -30,6 +30,12 @@
   color: $main-black
   margin: 10px 0 0 0
 
+  @media (max-width: 767px)
+    font-size: 18px
+    text-align: center
+    width: 210px
+    margin-top: 20px
+
 .gratitude-modal__small-text
   display: inline-block
   font-weight: normal
@@ -37,6 +43,11 @@
   color: $light-grey
   text-align: center
   width: 300px
+
+  @media (max-width: 767px)
+    font-size: 16px
+    text-align: center
+    width: 238px
 
 .gratitude-modal__close-button
   box-sizing: border-box
@@ -52,6 +63,12 @@
   align-items: center
   cursor: pointer
 
+  @media (max-width: 767px)
+    width: 16px
+    height: 16px
+    top: 15px
+    right: 10px
+
   &:hover
     opacity: 0.8
   &:active
@@ -59,5 +76,8 @@
 
   svg
     position: absolute
+    @media (max-width: 767px)
+      width: 16px
+      height: 16px
 
 

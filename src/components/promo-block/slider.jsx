@@ -20,7 +20,7 @@ function Slider ({onSlideChange}) {
       onSlideChange={onSlideChange}
     >
       <SwiperSlide>
-        <div className="promo-block__wrapper">
+        <div className="promo-block__wrapper promo-block__wrapper--slide-0">
           <div className="promo-block__content-wrapper">
             <h2 className="app__title promo-block__title">
               <span className="promo-block__big-text">Лига Банк</span><br/>
@@ -34,9 +34,9 @@ function Slider ({onSlideChange}) {
       <SwiperSlide>
         <div className="promo-block__wrapper promo-block__wrapper--slide-1">
           <div className="promo-block__content-wrapper">
-            <h2 className="app__title promo-block__title promo-block__title--dark">
+            <h2 className="app__title promo-block__title promo-block__title--dark promo-block__title--short">
               <span className="promo-block__big-text">Лига Банк</span><br/>
-              Ваша уверенность в завтрашнем дне
+              Ваша уверенность <br className="promo-block__title-shift"/> в завтрашнем дне
             </h2>
           </div>
         </div>
