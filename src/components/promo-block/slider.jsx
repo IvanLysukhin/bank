@@ -12,7 +12,6 @@ function Slider ({onSlideChange, mapY}) {
 
   const locationBtnClick = (evt) => {
     evt.preventDefault();
-    console.log(mapY);
     window.scrollBy(0, mapY);
   };
 
