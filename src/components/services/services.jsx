@@ -13,9 +13,9 @@ function Services({modalStatus}) {
   const tabs = useMemo(() => Object.keys(TabType), []);
 
   const tabKeydownHandler = (evt) => {
-    if (evt.keyCode === 9) {
-      evt.preventDefault();
-      if (!Object.values(modalStatus).some(Boolean)) {
+    if (!Object.values(modalStatus).some(Boolean)) {
+      if (evt.keyCode === 9) {
+        evt.preventDefault();
         setTab((prevState) => {
           const currentTabIndex = tabs.findIndex((tabType) => tabType === prevState);
           if (currentTabIndex === (tabs.length-1)) {

@@ -7,6 +7,7 @@ import CreditCalc from '../credit-calc/credit-calc';
 import MapComponent from '../map/map';
 import GratitudeModal from '../gratitude-modal/gratitude-modal';
 import LoginModal from '../login-modal/login-modal';
+import {useFocusDisable} from '../../custom-hooks/useFocusDisable';
 
 function App() {
   const [gratitudeModalStatus, setGratitudeModalStatus] = useState(false);
@@ -26,6 +27,8 @@ function App() {
     setMapY(map.current.getBoundingClientRect().y);
     setCreditCalcY(creditCalc.current.getBoundingClientRect().y);
   }, []);
+
+  useFocusDisable([gratitudeModalStatus,loginModalStatus]);
 
   return (
     <div className="app">
