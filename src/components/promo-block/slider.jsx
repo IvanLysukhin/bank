@@ -8,7 +8,7 @@ SwiperCore.use([Pagination, Autoplay]);
 
 const SLIDE_TIMEOUT = 4000;
 
-function Slider ({onSlideChange, mapY}) {
+function Slider ({onSlideChange, mapY, scrollToCreditCalc}) {
 
   const locationBtnClick = (evt) => {
     evt.preventDefault();
@@ -32,7 +32,13 @@ function Slider ({onSlideChange, mapY}) {
               <span className="promo-block__big-text">Лига Банк</span><br/>
               Кредиты на любой случай
             </h2>
-            <a className="app__link promo-block__link" href="#">Рассчитать кредит</a>
+            <a
+              className="app__link promo-block__link"
+              href="/"
+              onClick={scrollToCreditCalc}
+            >
+              Рассчитать кредит
+            </a>
             <img className="promo-block__pic" src="../../img/promo-cards.png" width="444" height="286" alt="Credit promo, two cards"/>
           </div>
         </div>
@@ -71,6 +77,7 @@ function Slider ({onSlideChange, mapY}) {
 Slider.propTypes = {
   onSlideChange: func.isRequired,
   mapY: number.isRequired,
+  scrollToCreditCalc: func.isRequired,
 };
 
 export default Slider;

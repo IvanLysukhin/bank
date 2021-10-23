@@ -1,9 +1,9 @@
 import React, {useState} from 'react';
 import 'swiper/swiper-bundle.css';
 import Slider from './slider';
-import {number} from 'prop-types';
+import {number, func} from 'prop-types';
 
-function PromoBlock({mapY}) {
+function PromoBlock({mapY, scrollToCreditCalc}) {
   const [slide, setSlide] = useState(0);
 
   let promoBlockClass = '';
@@ -26,13 +26,14 @@ function PromoBlock({mapY}) {
 
   return (
     <section className={`app__section promo-block ${promoBlockClass}`}>
-      <Slider onSlideChange={onSlideChange} mapY={mapY}/>
+      <Slider onSlideChange={onSlideChange} mapY={mapY} scrollToCreditCalc={scrollToCreditCalc}/>
     </section>
   );
 }
 
 PromoBlock.propTypes = {
   mapY: number.isRequired,
+  scrollToCreditCalc: func.isRequired,
 };
 
 export default PromoBlock;

@@ -2,7 +2,7 @@ import Logo from '../logo/logo';
 import React, {useEffect, useState} from 'react';
 import {func, bool} from 'prop-types';
 
-function AppNav({setLoginModalStatus, loginModalStatus}) {
+function AppNav({setLoginModalStatus, loginModalStatus, scrollToCreditCalc}) {
   const [loginData, setLoginData] = useState(null);
   const [menu, setMenu] = useState(false);
 
@@ -51,7 +51,11 @@ function AppNav({setLoginModalStatus, loginModalStatus}) {
           </a>
         </li>
         <li className="app-nav__item">
-          <a className="app__link app-nav__link app-nav__link--current" href="#">
+          <a
+            className="app__link app-nav__link app-nav__link--current"
+            href="#"
+            onClick={scrollToCreditCalc}
+          >
             Рассчитать кредит
           </a>
         </li>
@@ -113,6 +117,7 @@ function AppNav({setLoginModalStatus, loginModalStatus}) {
 
 AppNav.propTypes = {
   setLoginModalStatus: func.isRequired,
+  scrollToCreditCalc: func.isRequired,
   loginModalStatus: bool.isRequired,
 };
 

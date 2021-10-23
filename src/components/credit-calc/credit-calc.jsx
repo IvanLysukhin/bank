@@ -5,7 +5,7 @@ import Select from 'react-select';
 import NumberFormat from 'react-number-format';
 import CreditOffer from './credit-offer';
 import Application from './application';
-import {func} from 'prop-types';
+import {func, object} from 'prop-types';
 import {
   MAX_PRICE,
   MAX_PRICE_AUTO,
@@ -99,7 +99,7 @@ const handle = (props) => {
   );
 };
 
-function CreditCalc({sendApplicationHandler}) {
+function CreditCalc({sendApplicationHandler, link}) {
   const [creditGoal, setCreditGoal] = useState(false);
 
   const isMortgageCalc = creditGoal === 'mortgage';
@@ -240,7 +240,7 @@ function CreditCalc({sendApplicationHandler}) {
   }, [creditGoal]);
 
   return (
-    <section className="credit-calc">
+    <section className="credit-calc" ref={link}>
       <h3 className="credit-calc__main-title">Кредитный калькулятор</h3>
       <div className="credit-calc__step-one">
         <h4 className="credit-calc__step-title">Шаг 1. Цель кредита</h4>
@@ -421,6 +421,7 @@ function CreditCalc({sendApplicationHandler}) {
 
 CreditCalc.propTypes = {
   sendApplicationHandler: func.isRequired,
+  link: object.isRequired,
 };
 
 export default CreditCalc;
