@@ -1,5 +1,6 @@
-import React, {useEffect, useRef} from 'react';
+import React, {useRef} from 'react';
 import {func} from 'prop-types';
+import {useModal} from '../../custom-hooks/useModal';
 
 function GratitudeModal({setGratitudeModalStatus}) {
   const modal= useRef();
@@ -20,19 +21,7 @@ function GratitudeModal({setGratitudeModalStatus}) {
     }
   };
 
-  useEffect(()=>{
-    document.addEventListener('keydown',escKeydownHandler);
-    return () => {
-      document.removeEventListener('keydown',escKeydownHandler);
-    };
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.style.overflow = 'hidden';
-    return () => {
-      document.documentElement.style.overflow = 'scroll';
-    };
-  });
+  useModal(escKeydownHandler);
 
   return (
     <div

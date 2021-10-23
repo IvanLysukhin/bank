@@ -1,12 +1,35 @@
-import React,  {useState} from 'react';
+import React,  {useState, useMemo} from 'react';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import 'swiper/swiper-bundle.css';
 import {TabType} from '../../constants';
+import {useKeydownListener} from '../../custom-hooks/useKeydownListener';
+import {object} from 'prop-types';
 
-function Services() {
+function Services({modalStatus}) {
   const [tab, setTab] = useState(TabType.DEPOSIT);
 
   let element;
+
+  const tabs = useMemo(() => Object.keys(TabType), []);
+
+  const tabKeydownHandler = (evt) => {
+    if (evt.keyCode === 9) {
+      evt.preventDefault();
+      if (!Object.values(modalStatus).some(Boolean)) {
+        setTab((prevState) => {
+          const currentTabIndex = tabs.findIndex((tabType) => tabType === prevState);
+          if (currentTabIndex === (tabs.length-1)) {
+            return tabs[0];
+          }
+          return tabs[currentTabIndex + 1];
+        });
+      }
+    }
+
+  };
+
+  useKeydownListener(tabKeydownHandler);
+
 
   switch(tab) {
     case (TabType.DEPOSIT):
@@ -274,5 +297,9 @@ function Services() {
     </section>
   );
 }
+
+Services.propTypes = {
+  modalStatus: object.isRequired,
+};
 
 export default Services;

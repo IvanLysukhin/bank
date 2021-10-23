@@ -35,7 +35,13 @@ function App() {
       <main>
         <h1 className="app__title visually-hidden">Интернет-банк ЛИГА банк</h1>
         <PromoBlock mapY={mapY} scrollToCreditCalc={scrollToCreditCalc}/>
-        <Services/>
+        <Services  modalStatus={
+          {
+            gratitudeModalStatus,
+            loginModalStatus,
+          }
+        }
+        />
         <CreditCalc sendApplicationHandler={setGratitudeModalStatus} link={creditCalc}/>
         <MapComponent link={map}/>
       </main>

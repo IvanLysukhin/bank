@@ -1,5 +1,6 @@
-import React, {useEffect, useState, useRef} from 'react';
+import React, {useState, useRef} from 'react';
 import {func} from 'prop-types';
+import {useModal} from '../../custom-hooks/useModal';
 
 function LoginModal({setLoginModalStatus}) {
   const [showPassword, setShowPassword] = useState(false);
@@ -54,19 +55,7 @@ function LoginModal({setLoginModalStatus}) {
     }
   };
 
-  useEffect(()=>{
-    document.addEventListener('keydown',escKeydownHandler);
-    return () => {
-      document.removeEventListener('keydown',escKeydownHandler);
-    };
-  }, []);
-
-  useEffect(() => {
-    document.documentElement.style.overflow = 'hidden';
-    return () => {
-      document.documentElement.style.overflow = 'scroll';
-    };
-  });
+  useModal(escKeydownHandler);
 
   return (
     <div
