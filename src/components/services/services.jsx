@@ -9,26 +9,26 @@ function Services({modalStatus}) {
   const [tab, setTab] = useState(TabType.DEPOSIT);
 
   let element;
-
-  const tabs = useMemo(() => Object.keys(TabType), []);
-
-  const tabKeydownHandler = (evt) => {
-    if (!Object.values(modalStatus).some(Boolean)) {
-      if (evt.keyCode === 9) {
-        evt.preventDefault();
-        setTab((prevState) => {
-          const currentTabIndex = tabs.findIndex((tabType) => tabType === prevState);
-          if (currentTabIndex === (tabs.length-1)) {
-            return tabs[0];
-          }
-          return tabs[currentTabIndex + 1];
-        });
-      }
-    }
-
-  };
-
-  useKeydownListener(tabKeydownHandler);
+  //
+  // const tabs = useMemo(() => Object.keys(TabType), []);
+  //
+  // const tabKeydownHandler = (evt) => {
+  //   if (!Object.values(modalStatus).some(Boolean)) {
+  //     if (evt.keyCode === 9) {
+  //       evt.preventDefault();
+  //       setTab((prevState) => {
+  //         const currentTabIndex = tabs.findIndex((tabType) => tabType === prevState);
+  //         if (currentTabIndex === (tabs.length-1)) {
+  //           return tabs[0];
+  //         }
+  //         return tabs[currentTabIndex + 1];
+  //       });
+  //     }
+  //   }
+  //
+  // };
+  //
+  // useKeydownListener(tabKeydownHandler);
 
 
   switch(tab) {
@@ -145,6 +145,9 @@ function Services({modalStatus}) {
           onClick={() => {
             tabClickHandler(TabType.DEPOSIT);
           }}
+          onFocus={() => {
+            tabClickHandler(TabType.DEPOSIT);
+          }}
         >
           <svg width="34" height="33" viewBox="0 0 34 33" fill="none" xmlns="http:www.w3.org/2000/svg">
             <path d="M4.20734 26.063H29.7924V4.36579H4.20734V26.063ZM12.8681 11.7959C14.4742 11.7959 15.8268 12.8933 16.2055 14.3724H23.727V16.056H16.2055C15.8267 17.5352 14.4742 18.6327 12.8681 18.6327C10.9695 18.6327 9.42492 17.0991 9.42492 15.2142C9.42483 13.3294 10.9695 11.7959 12.8681 11.7959Z" fill="#2C36F2"/>
@@ -155,6 +158,9 @@ function Services({modalStatus}) {
         <li
           className={getActiveClass(TabType.CREDIT, tab)}
           onClick={() => {
+            tabClickHandler(TabType.CREDIT);
+          }}
+          onFocus={() => {
             tabClickHandler(TabType.CREDIT);
           }}
         >
@@ -170,6 +176,9 @@ function Services({modalStatus}) {
           onClick={()=>{
             tabClickHandler(TabType.INSURANCE);
           }}
+          onFocus={()=>{
+            tabClickHandler(TabType.INSURANCE);
+          }}
         >
           <svg width="28" height="34" viewBox="0 0 28 34" fill="none" xmlns="http:www.w3.org/2000/svg">
             <path d="M27.9234 5.31216C22.1552 5.31216 17.7362 3.65462 13.9995 0C10.2631 3.65462 5.84431 5.31216 0.0766133 5.31216C0.0766133 14.8295 -1.88138 28.4631 13.9994 34C29.8813 28.4632 27.9234 14.8296 27.9234 5.31216ZM12.8461 22.0601L8.2074 17.3939L10.2843 15.3051L12.8461 17.8823L17.7151 12.9849L19.7919 15.0737L12.8461 22.0601Z" fill="#565EF5"/>
@@ -179,6 +188,9 @@ function Services({modalStatus}) {
         <li
           className={getActiveClass(TabType.ONLINE, tab)}
           onClick={()=>{
+            tabClickHandler(TabType.ONLINE);
+          }}
+          onFocus={()=>{
             tabClickHandler(TabType.ONLINE);
           }}
         >

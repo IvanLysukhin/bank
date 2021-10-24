@@ -6,6 +6,13 @@ function LoginModal({setLoginModalStatus}) {
   const [showPassword, setShowPassword] = useState(false);
   const modal = useRef();
 
+  const closeBtnRef = useRef();
+  const loginRef = useRef();
+  const passwordRef = useRef();
+  const hideRef = useRef();
+  const btnRef = useRef();
+
+
   const showPasswordBtnClickHandler = (evt) => {
     evt.preventDefault();
     setShowPassword((prevState) => !prevState);
@@ -55,7 +62,14 @@ function LoginModal({setLoginModalStatus}) {
     }
   };
 
-  useModal(escKeydownHandler);
+  useModal(escKeydownHandler,
+    [
+      loginRef,
+      passwordRef,
+      hideRef,
+      btnRef,
+      closeBtnRef,
+    ]);
 
   return (
     <div
@@ -84,6 +98,7 @@ function LoginModal({setLoginModalStatus}) {
               className="login-modal__close-button"
               onClick={closeBtnClickHandler}
               tabIndex="5"
+              ref={closeBtnRef}
             >
               <svg width="18" height="18" viewBox="0 0 18 18" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path d="M1 1L17 17M17 1L1 17" stroke="#1F1E25" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
@@ -99,7 +114,14 @@ function LoginModal({setLoginModalStatus}) {
             <ul className="login-modal__list">
               <li className="login-modal__item">
                 <label className="login-modal__label" htmlFor="login">Логин</label>
-                <input className="login-modal__input" type="text" name="login" id="login" tabIndex="1" autoFocus/>
+                <input
+                  className="login-modal__input"
+                  type="text"
+                  name="login"
+                  id="login"
+                  autoFocus
+                  ref={loginRef}
+                />
               </li>
               <li className="login-modal__item login-modal__item--password">
                 <label className="login-modal__label" htmlFor="password">Пароль</label>
@@ -109,8 +131,15 @@ function LoginModal({setLoginModalStatus}) {
                   name='password'
                   id='password'
                   tabIndex="2"
+                  ref={passwordRef}
                 />
-                <button className="login-modal__show" type="button" onClick={showPasswordBtnClickHandler} tabIndex="3">
+                <button
+                  className="login-modal__show"
+                  type="button"
+                  onClick={showPasswordBtnClickHandler}
+                  tabIndex="3"
+                  ref={hideRef}
+                >
                   <svg width="22" height="12" viewBox="0 0 22 12" fill="none" xmlns="http://www.w3.org/2000/svg">
                     <path d="M8.29878 12L6.33638 11.4893L7.13618 8.59185C5.93899 8.16352 4.82634 7.5393 3.84654 6.7463L1.65854 8.86987L0.220528 7.47486L2.40955 5.35228C1.17386 3.91662 0.343585 2.19431 0 0.353927L2 0C2.77134 4.14262 6.50711 7.28557 11 7.28557C15.4919 7.28557 19.2287 4.14262 20 0L22 0.352941C21.6569 2.19358 20.827 3.91624 19.5915 5.35228L21.7795 7.47486L20.3415 8.86987L18.1535 6.7463C17.1737 7.5393 16.061 8.16352 14.8638 8.59185L15.6636 11.4903L13.7012 12L12.9004 9.10155C11.6426 9.31063 10.3574 9.31063 9.0996 9.10155L8.29878 12Z" fill="#1F1E25"/>
                   </svg>
@@ -118,7 +147,13 @@ function LoginModal({setLoginModalStatus}) {
               </li>
             </ul>
             <a className="login-modal__link" href="/">Забыли пароль?</a>
-            <button className="login-modal__btn" tabIndex="4">Войти</button>
+            <button
+              className="login-modal__btn"
+              tabIndex="4"
+              ref={btnRef}
+            >
+              Войти
+            </button>
           </form>
         </div>
       </div>

@@ -115,6 +115,7 @@ function Application ({results, type, sendApplicationHandler}) {
                 placeholder="ФИО"
                 onChange={nameInputHandler}
                 value={userData.name}
+                autoFocus
               />
             </li>
             <li className="credit-calc__application-form-item">
