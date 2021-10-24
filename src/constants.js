@@ -11,6 +11,8 @@ export const MIN_FEE = 10;
 export const MIN_FEE_AUTO = 20;
 export const MIN_PAID = 120000;
 export const MIN_PAID_AUTO = 100000;
+export const AUTO_STEP = 50000;
+export const STEP = 100000;
 
 export const MONTH_COUNT = 12;
 export const MOTHER_CAPITAL = 470000;

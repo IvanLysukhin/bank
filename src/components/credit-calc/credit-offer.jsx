@@ -58,7 +58,7 @@ function CreditOffer ({data, isMortgageCalc, btnHandler}) {
             <ul className="credit-calc__offer-list">
               <li className="credit-calc__offer-item">
                 <p className="credit-calc__offer-value">{formatNumberToStr(price)} {price <= PRICE_LIMIT_TEN ? 'рублей' : '₽'} </p>
-                <p className="credit-calc__offer-label">Сумма ипотеки</p>
+                <p className="credit-calc__offer-label">Сумма {isMortgageCalc ? 'ипотеки' : 'автокредита'}</p>
               </li>
               <li className="credit-calc__offer-item">
                 <p className="credit-calc__offer-value">{formatPercent}</p>

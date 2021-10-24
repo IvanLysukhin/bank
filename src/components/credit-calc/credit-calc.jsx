@@ -19,7 +19,9 @@ import {
   MIN_FEE,
   MIN_FEE_AUTO,
   MIN_PAID,
-  MIN_PAID_AUTO
+  MIN_PAID_AUTO,
+  AUTO_STEP,
+  STEP
 } from '../../constants';
 
 const options = [
@@ -133,7 +135,7 @@ function CreditCalc({sendApplicationHandler, link}) {
   const minusBtnHandler = () => {
     if (calcNumbers.price >= (isMortgageCalc ? MIN_PRICE : MIN_PRICE_AUTO)) {
       setCalcNumbers((prevState) => {
-        const price = prevState.price - 100000;
+        const price = prevState.price - (isMortgageCalc ? STEP : AUTO_STEP);
         const initialFee = price * (prevState.initialFeePercent / PERCENT);
         return {
           ...prevState,
@@ -147,7 +149,7 @@ function CreditCalc({sendApplicationHandler, link}) {
   const plusBtnHandler = () => {
     if (calcNumbers.price <= (isMortgageCalc ? MAX_PRICE : MAX_PRICE_AUTO)) {
       setCalcNumbers((prevState) => {
-        const price = prevState.price + 100000;
+        const price = prevState.price + (isMortgageCalc ? STEP : AUTO_STEP);
         const initialFee = price * (prevState.initialFeePercent / PERCENT);
         return {
           ...prevState,
