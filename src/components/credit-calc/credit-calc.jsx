@@ -120,6 +120,25 @@ function CreditCalc({sendApplicationHandler, link}) {
   const [application, setApplication] = useState(false);
   const [calcNumbers, setCalcNumbers] = useState(initialState);
 
+  const feeBlurHandler = () => {
+    const minInitialFee = calcNumbers.price * (MIN_FEE / PERCENT);
+    const maxInitialFee = calcNumbers.price;
+
+    if (calcNumbers.initialFee < minInitialFee) {
+      setCalcNumbers({
+        ...calcNumbers,
+        initialFee: minInitialFee,
+      });
+    }
+
+    if (calcNumbers.initialFee > maxInitialFee) {
+      setCalcNumbers({
+        ...calcNumbers,
+        initialFee: maxInitialFee,
+      });
+    }
+  };
+
   const offerBtnClickHandler = () => {
     setApplication(true);
   };
@@ -314,6 +333,7 @@ function CreditCalc({sendApplicationHandler, link}) {
                   name="initialFee"
                   onValueChange={feeNumberInputHandler}
                   value={calcNumbers.initialFee}
+                  onBlur={feeBlurHandler}
                 />
               </div>
               <div className="credit-calc__scrollbar-container">

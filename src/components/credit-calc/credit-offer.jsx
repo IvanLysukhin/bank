@@ -8,7 +8,11 @@ import {
   PRICE_LIMIT_TEN,
   PRICE_LIMIT_ONE,
   MIN_CREDIT_SUM,
-  MIN_CREDIT_SUM_AUTO
+  MIN_CREDIT_SUM_AUTO,
+  MAX_PRICE,
+  MAX_PRICE_AUTO,
+  MIN_PRICE,
+  MIN_PRICE_AUTO
 } from '../../constants';
 
 
@@ -23,6 +27,7 @@ function CreditOffer ({data, isMortgageCalc, btnHandler}) {
     lifeInsurance,
   } = data;
 
+  const isPriceInvalid = price > (isMortgageCalc ? MAX_PRICE : MAX_PRICE_AUTO) || price < (isMortgageCalc ? MIN_PRICE : MIN_PRICE_AUTO);
 
   let loanRate = initialFeePercent < 15 ? 0.094 : 0.085;
 
@@ -52,7 +57,7 @@ function CreditOffer ({data, isMortgageCalc, btnHandler}) {
   return (
     <div className="credit-calc__offer">
       <div className="credit-calc__offer-container">
-        {creditSum > (isMortgageCalc ? MIN_CREDIT_SUM : MIN_CREDIT_SUM_AUTO) ?
+        {creditSum > (isMortgageCalc ? MIN_CREDIT_SUM : MIN_CREDIT_SUM_AUTO) && !isPriceInvalid ?
           <>
             <h4 className="credit-calc__step-title credit-calc__step-title--offer">Наше предложение</h4>
             <ul className="credit-calc__offer-list">
