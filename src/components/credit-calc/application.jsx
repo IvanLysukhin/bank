@@ -10,7 +10,7 @@ const initialState = {
   email: '',
 };
 
-function Application ({results, type, sendApplicationHandler}) {
+function Application ({results, type, onApplicationSent}) {
 
   const creditName = type === 'mortgage' ? 'Ипотека' : 'Автокредит';
   const priceLabel = type === 'mortgage' ? 'Стоимость недвижимости ' : 'Стоимость автомобиля';
@@ -19,6 +19,7 @@ function Application ({results, type, sendApplicationHandler}) {
 
   const [userData, setUserData] = useState(initialState);
   const [saveStatus, setSaveStatus] = useState(false);
+  const [numberValid, setNumberValid] = useState(false);
   const [applicationNumber, setApplicationNumber] = useState(0);
 
   const nameInputHandler = ({target}) => {
@@ -43,16 +44,20 @@ function Application ({results, type, sendApplicationHandler}) {
     }
   }, [applicationNumber]);
 
-
   const submitFormHandler = (evt) => {
     evt.preventDefault();
     const data = Object.values(userData);
     const isSomeDataEmpty = data.some((info) => info.length === 0);
     const isCorrectNumber = userData.userPhone.replace(/[-+()/\\]/g,'').trim().length === 11;
 
+    if (!isCorrectNumber) {
+      setNumberValid(true);
+    }
+
     if (!isSomeDataEmpty && isCorrectNumber && !saveStatus) {
+      setNumberValid(false);
       saveData(userData);
-      sendApplicationHandler(true);
+      onApplicationSent(true);
       setSaveStatus(true);
       setApplicationNumber((prevState) => prevState += 1);
     }
@@ -121,7 +126,7 @@ function Application ({results, type, sendApplicationHandler}) {
             <li className="credit-calc__application-form-item">
               <label className="visually-hidden" htmlFor="userPhone">Номер телефона</label>
               <NumberFormat
-                className="credit-calc__application-input"
+                className={`credit-calc__application-input ${numberValid && 'credit-calc__application-input--error'}`}
                 id="userPhone"
                 name="userPhone"
                 format={'+7-(###)-###-##-##'}
@@ -157,7 +162,7 @@ Application.propTypes = {
     years: number.isRequired,
   }).isRequired,
   type: string.isRequired,
-  sendApplicationHandler: func.isRequired,
+  onApplicationSent: func.isRequired,
 };
 
 export default Application;

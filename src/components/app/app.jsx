@@ -45,7 +45,7 @@ function App() {
           }
         }
         />
-        <CreditCalc sendApplicationHandler={setGratitudeModalStatus} link={creditCalc}/>
+        <CreditCalc onApplicationSent={setGratitudeModalStatus} link={creditCalc}/>
         <MapComponent link={map}/>
       </main>
       <footer className="app__footer">

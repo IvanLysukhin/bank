@@ -101,7 +101,7 @@ const handle = (props) => {
   );
 };
 
-function CreditCalc({sendApplicationHandler, link}) {
+function CreditCalc({onApplicationSent, link}) {
   const [creditGoal, setCreditGoal] = useState(false);
 
   const isMortgageCalc = creditGoal === 'mortgage';
@@ -454,7 +454,7 @@ function CreditCalc({sendApplicationHandler, link}) {
       <Application
         results={calcNumbers}
         type={creditGoal}
-        sendApplicationHandler={sendApplicationHandler}
+        onApplicationSent={onApplicationSent}
       />}
 
     </section>
@@ -462,7 +462,7 @@ function CreditCalc({sendApplicationHandler, link}) {
 }
 
 CreditCalc.propTypes = {
-  sendApplicationHandler: func.isRequired,
+  onApplicationSent: func.isRequired,
   link: object.isRequired,
 };
 
