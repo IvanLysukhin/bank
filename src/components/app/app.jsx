@@ -7,7 +7,6 @@ import CreditCalc from '../credit-calc/credit-calc';
 import MapComponent from '../map/map';
 import GratitudeModal from '../gratitude-modal/gratitude-modal';
 import LoginModal from '../login-modal/login-modal';
-import {useFocusDisable} from '../../custom-hooks/useFocusDisable';
 import {useFocus} from '../../custom-hooks/useFocus';
 
 function App() {
