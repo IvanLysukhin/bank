@@ -139,6 +139,25 @@ function CreditCalc({sendApplicationHandler, link}) {
     }
   };
 
+  const priceBlurHandler = () => {
+    const min = isMortgageCalc ? MIN_PRICE : MIN_PRICE_AUTO;
+    const max = isMortgageCalc ? MAX_PRICE : MAX_PRICE_AUTO;
+
+    if (calcNumbers.price < min) {
+      setCalcNumbers({
+        ...calcNumbers,
+        price: min,
+      });
+    }
+
+    if (calcNumbers.price > max) {
+      setCalcNumbers({
+        ...calcNumbers,
+        price: max,
+      });
+    }
+  };
+
   const offerBtnClickHandler = () => {
     setApplication(true);
   };
@@ -306,6 +325,7 @@ function CreditCalc({sendApplicationHandler, link}) {
                   name="price"
                   value={calcNumbers.price}
                   onValueChange={numberInputHandle}
+                  onBlur={priceBlurHandler}
                 />
                 {invalidNumber && <span className="credit-calc__error-message">Некорректное значение</span>}
                 <button
